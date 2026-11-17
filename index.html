@@ -19,26 +19,33 @@
           },
           colors: {
             obsidian: {
-              950: '#04140C',
-              900: '#092417',
-              850: '#0E3321',
-              800: '#14442D',
-              700: '#1E5E3F',
+              950: '#0D0D0D',
+              900: '#141417',
+              850: '#1A1B20',
+              800: '#22242B',
+              700: '#2E313B',
+            },
+            brand: {
+              black: '#0D0D0D',
+              gold: '#FF9D00',
+              lightblue: '#48CAED',
+              pink: '#F73C5C',
+              skyblue: '#2A8BEA',
             },
             clover: {
-              50: '#ECFDF5',
-              100: '#D1FAE5',
-              400: '#34D399',
-              500: '#10B981',
-              600: '#059669',
-              700: '#047857',
+              50: '#16181F',
+              100: '#1E212B',
+              400: '#48CAED',
+              500: '#2A8BEA',
+              600: '#FF9D00',
+              700: '#FF9D00',
             },
             gold: {
-              300: '#F5E7B2',
-              400: '#E6C65B',
-              500: '#D4AF37',
-              600: '#B59024',
-              700: '#8C6D18',
+              300: '#FFC266',
+              400: '#FFB033',
+              500: '#FF9D00',
+              600: '#E08A00',
+              700: '#B87100',
             }
           }
         }
@@ -46,138 +53,116 @@
     };
   </script>
   <style>
-    /* Custom Scrollbar & Luminous Clover, Warm Gold + Crisp White Executive Styling */
+    /* Custom Scrollbar & Vibrant Dark-Luxury Palette (#0D0D0D, #FF9D00, #48CAED, #F73C5C, #2A8BEA) */
     body {
-      background-color: #EBF7F0;
+      background-color: #0D0D0D;
       background-image:
-        radial-gradient(circle at 12% 0%, rgba(16, 185, 129, 0.22) 0%, rgba(235, 247, 240, 0) 48%),
-        radial-gradient(circle at 88% 8%, rgba(245, 158, 11, 0.14) 0%, rgba(235, 247, 240, 0) 45%),
-        radial-gradient(circle at 50% 100%, rgba(5, 150, 105, 0.12) 0%, rgba(235, 247, 240, 0) 55%);
-      color: #062114;
+        radial-gradient(circle at 10% 0%, rgba(42, 139, 234, 0.16) 0%, rgba(13, 13, 13, 0) 45%),
+        radial-gradient(circle at 90% 5%, rgba(255, 157, 0, 0.14) 0%, rgba(13, 13, 13, 0) 42%),
+        radial-gradient(circle at 50% 100%, rgba(247, 60, 92, 0.12) 0%, rgba(13, 13, 13, 0) 50%);
+      color: #F8FAFC;
       font-family: 'Inter', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Crisp White Executive Cards & Statement Sheets with Warm Gold & Clover Borders */
+    /* Dark Executive Cards with Multi-Accent Depth */
     .wealth-card {
-      background-color: #FFFFFF;
-      color: #062114;
-      border: 1px solid rgba(16, 185, 129, 0.30);
-      box-shadow: 0 12px 28px -10px rgba(6, 78, 59, 0.12), 0 2px 6px -1px rgba(217, 119, 6, 0.05);
+      background-color: #141417;
+      color: #F8FAFC;
+      border: 1px solid #262932;
+      box-shadow: 0 14px 32px -12px rgba(0, 0, 0, 0.75);
     }
 
     .wealth-subcard {
-      background-color: #F3FBF6;
-      color: #062114;
-      border: 1px solid #C6F1D9;
+      background-color: #0D0D0D;
+      color: #F8FAFC;
+      border: 1px solid #23262F;
     }
 
     .wealth-input {
-      background-color: #FFFFFF !important;
-      color: #062114 !important;
-      border: 1px solid #86EFAC !important;
+      background-color: #0D0D0D !important;
+      color: #F8FAFC !important;
+      border: 1px solid #2E323E !important;
     }
     .wealth-input:focus {
-      border-color: #059669 !important;
-      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+      border-color: #48CAED !important;
+      box-shadow: 0 0 0 2px rgba(72, 202, 237, 0.25);
     }
 
-    /* Statement Sheet White-Paper Luxury Styling on Screen & Print */
+    /* Statement Sheet Styling on Screen */
     .statement-sheet {
-      background-color: #FFFFFF !important;
-      color: #062114 !important;
-      border: 1px solid #A7F3D0 !important;
-      box-shadow: 0 20px 45px -15px rgba(6, 78, 59, 0.18) !important;
-    }
-
-    /* Crisp White Executive Cards & Statement Sheets for High-Contrast Luxury */
-    .wealth-card {
-      background-color: #FFFFFF;
-      color: #062114;
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      box-shadow: 0 10px 30px -10px rgba(2, 16, 9, 0.45);
-    }
-
-    .wealth-subcard {
-      background-color: #F4FBF7;
-      color: #062114;
-      border: 1px solid #D1FAE5;
-    }
-
-    .wealth-input {
-      background-color: #FFFFFF !important;
-      color: #062114 !important;
-      border: 1px solid #A7F3D0 !important;
-    }
-    .wealth-input:focus {
-      border-color: #059669 !important;
-      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
-    }
-
-    /* Statement Sheet White-Paper Luxury Styling on Screen & Print */
-    .statement-sheet {
-      background-color: #FFFFFF !important;
-      color: #062114 !important;
-      border: 1px solid #A7F3D0 !important;
-      box-shadow: 0 20px 45px -15px rgba(2, 16, 9, 0.55) !important;
+      background-color: #141417 !important;
+      color: #F8FAFC !important;
+      border: 1px solid #2E323E !important;
+      box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.85) !important;
     }
     .statement-sheet .bg-obsidian-950,
     .statement-sheet .bg-obsidian-900 {
-      background-color: #F4FBF7 !important;
-      color: #062114 !important;
-      border-color: #D1FAE5 !important;
+      background-color: #0D0D0D !important;
+      color: #F8FAFC !important;
+      border-color: #262932 !important;
     }
     .statement-sheet .text-white {
-      color: #062114 !important;
+      color: #FFFFFF !important;
     }
     .statement-sheet .text-gray-300,
     .statement-sheet .text-gray-200 {
-      color: #1F3A2C !important;
+      color: #CBD5E1 !important;
     }
     .statement-sheet .text-gray-400 {
-      color: #4B6B5A !important;
+      color: #94A3B8 !important;
     }
     .statement-sheet .text-gold-400 {
-      color: #047857 !important;
+      color: #FF9D00 !important;
     }
     .statement-sheet .text-emerald-400 {
-      color: #059669 !important;
+      color: #48CAED !important;
     }
     .statement-sheet .border-obsidian-800,
     .statement-sheet .border-obsidian-700 {
-      border-color: #D1FAE5 !important;
+      border-color: #262932 !important;
     }
     .statement-sheet input,
     .statement-sheet select {
-      background-color: #FFFFFF !important;
-      color: #062114 !important;
-      border-color: #A7F3D0 !important;
+      background-color: #141417 !important;
+      color: #FFFFFF !important;
+      border-color: #2E323E !important;
     }
     .statement-sheet .bg-amber-950\/30 {
-      background-color: #FFFBEB !important;
-      border-color: #FCD34D !important;
-      color: #78350F !important;
+      background-color: rgba(247, 60, 92, 0.12) !important;
+      border-color: rgba(247, 60, 92, 0.45) !important;
+      color: #FECDD3 !important;
     }
+
+    /* Map legacy light utility classes inside cards to the new dark palette */
+    .text-emerald-950 { color: #FFFFFF !important; }
+    .text-emerald-900, .text-emerald-900\/80, .text-emerald-900\/70 { color: #CBD5E1 !important; }
+    .text-emerald-800, .text-emerald-800\/80, .text-emerald-800\/75, .text-emerald-700\/75 { color: #94A3B8 !important; }
+    .text-teal-800\/80, .text-amber-900\/80 { color: #94A3B8 !important; }
+    .text-teal-700 { color: #48CAED !important; }
+    .text-clover-700, .text-clover-600 { color: #FF9D00 !important; }
+    .border-clover-100 { border-color: #23262F !important; }
+    .divide-clover-100 > :not([hidden]) ~ :not([hidden]) { border-color: #23262F !important; }
 
     ::-webkit-scrollbar {
       width: 8px;
       height: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #E2F4EA;
+      background: #0D0D0D;
     }
     ::-webkit-scrollbar-thumb {
-      background: #34D399;
+      background: #2E313B;
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #059669;
+      background: #48CAED;
     }
 
     input[type="range"] {
       -webkit-appearance: none;
       appearance: none;
-      background: linear-gradient(90deg, #A7F3D0 0%, #FDE68A 100%);
+      background: linear-gradient(90deg, #2A8BEA 0%, #48CAED 50%, #FF9D00 100%);
       height: 7px;
       border-radius: 999px;
       outline: none;
@@ -188,45 +173,14 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #10B981 0%, #047857 100%);
+      background: #FF9D00;
       cursor: pointer;
-      border: 2.5px solid #FBBF24;
-      box-shadow: 0 2px 10px rgba(5, 150, 105, 0.45);
+      border: 2.5px solid #0D0D0D;
+      box-shadow: 0 0 12px rgba(255, 157, 0, 0.65);
     }
 
     .gold-glow {
-      box-shadow: 0 12px 32px -8px rgba(16, 185, 129, 0.25), 0 0 0 1.5px rgba(245, 158, 11, 0.45);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1E5E3F;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #FFFFFF;
-    }
-
-    input[type="range"] {
-      -webkit-appearance: none;
-      appearance: none;
-      background: #D1FAE5;
-      height: 6px;
-      border-radius: 999px;
-      outline: none;
-    }
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #059669;
-      cursor: pointer;
-      border: 2px solid #FFFFFF;
-      box-shadow: 0 0 12px rgba(5, 150, 105, 0.45);
-    }
-
-    .gold-glow {
-      box-shadow: 0 10px 30px -8px rgba(16, 185, 129, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 32px -8px rgba(42, 139, 234, 0.25), 0 0 0 1.5px rgba(255, 157, 0, 0.55);
     }
 
     /* ==========================================================================
@@ -319,18 +273,19 @@
 
       /* Keep gold accent bar and subtle gold highlights clean */
       .statement-gold-bar {
-        background-color: #D4AF37 !important;
+        background: #FF9D00 !important;
+        background-color: #FF9D00 !important;
         height: 4px !important;
       }
 
       .statement-sheet .text-gold-400,
       .statement-sheet .text-gold-500 {
-        color: #8C6D18 !important;
+        color: #B87100 !important;
         font-weight: 700 !important;
       }
 
       .statement-sheet .text-emerald-400 {
-        color: #065F46 !important;
+        color: #1D4ED8 !important;
         font-weight: 600 !important;
       }
 
@@ -391,56 +346,42 @@
   </div>
 
   <!-- Top Executive Header -->
-  <header class="no-print bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 border-b-2 border-amber-400/70 sticky top-0 z-40 shadow-lg">
+  <header class="no-print bg-[#0D0D0D]/95 border-b border-[#262932] sticky top-0 z-40 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-      <!-- Brand Identity with Prosperity Dollar + Lucky Clover Green, Gold & Crisp White Emblem -->
-      <div class="flex items-center gap-3.5">
-        <div class="w-11 h-11 rounded-xl bg-white border-2 border-amber-400 flex items-center justify-center shadow-md shrink-0">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Amplified Media Prosperity Logo">
-            <!-- Outer Gold & Clover Prosperity Ring -->
-            <circle cx="16" cy="16" r="13.5" stroke="#F59E0B" stroke-opacity="0.7" stroke-width="1.6"/>
-            <!-- Flanking Soundwave Equalizer Bars -->
-            <rect x="4.5" y="13" width="2.2" height="6" rx="1.1" fill="#10B981"/>
-            <rect x="25.3" y="13" width="2.2" height="6" rx="1.1" fill="#10B981"/>
-            <!-- Executive Dollar Sign ($) Core -->
-            <path d="M16 5.5V26.5" stroke="#D97706" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M20.2 10.6C20.2 8.7 18.4 7.5 16 7.5C13.4 7.5 11.7 8.8 11.7 10.8C11.7 13 13.5 14 16.1 14.7C18.8 15.4 20.6 16.5 20.6 18.9C20.6 21.1 18.7 22.5 16 22.5C13.3 22.5 11.4 21.2 11.4 19.1" stroke="#047857" stroke-width="2.6" stroke-linecap="round"/>
-          </svg>
+      <!-- Brand Identity (Clean Typography — Logo Removed) -->
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="text-lg sm:text-xl font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</span>
+          <span class="text-[10px] font-mono uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-[#FF9D00] text-[#0D0D0D] font-extrabold shadow-sm">Ops Suite</span>
         </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="text-base sm:text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</span>
-            <span class="text-[10px] font-mono uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-amber-300 text-emerald-950 font-extrabold shadow-sm">Prosperity Suite</span>
-          </div>
-          <p class="text-xs text-emerald-100">Agency Operations, Client Payment Tracker &amp; Contractor Payout Suite</p>
-        </div>
+        <p class="text-xs text-[#48CAED] mt-0.5">Agency Operations, Client Payment Tracker &amp; Contractor Payout Suite</p>
       </div>
 
       <!-- Global Controls: Exchange Rate, Active Billing Month, Backup & Rollover -->
       <div class="flex flex-wrap items-center gap-2.5">
-        <div class="flex items-center gap-2 bg-white border border-amber-300 rounded-lg px-3 py-1.5 shadow-sm">
-          <span class="text-xs text-emerald-900 font-semibold">USD → PHP:</span>
-          <span class="text-xs font-mono font-bold text-amber-600">₱</span>
-          <input id="global-fx-rate" type="number" step="0.01" min="1" value="63.67" class="w-16 bg-transparent text-xs font-mono font-bold text-emerald-950 focus:outline-none focus:text-clover-600" title="Editable USD to PHP Exchange Rate" />
+        <div class="flex items-center gap-2 bg-[#141417] border border-[#2E323E] rounded-lg px-3 py-1.5">
+          <span class="text-xs text-slate-400 font-semibold">USD → PHP:</span>
+          <span class="text-xs font-mono font-bold text-[#FF9D00]">₱</span>
+          <input id="global-fx-rate" type="number" step="0.01" min="1" value="63.67" class="w-16 bg-transparent text-xs font-mono font-bold text-white focus:outline-none focus:text-[#48CAED]" title="Editable USD to PHP Exchange Rate" />
         </div>
 
-        <div class="flex items-center gap-2 bg-white border border-amber-300 rounded-lg px-3 py-1.5 shadow-sm">
-          <span class="text-xs text-emerald-900 font-semibold">Month:</span>
-          <input id="global-billing-month" type="text" value="November 2026" class="w-32 bg-transparent text-xs font-bold text-emerald-950 focus:outline-none focus:text-clover-600" />
+        <div class="flex items-center gap-2 bg-[#141417] border border-[#2E323E] rounded-lg px-3 py-1.5">
+          <span class="text-xs text-slate-400 font-semibold">Month:</span>
+          <input id="global-billing-month" type="text" value="November 2026" class="w-32 bg-transparent text-xs font-bold text-white focus:outline-none focus:text-[#48CAED]" />
         </div>
 
-        <button onclick="exportBackupJSON()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-700/80 hover:bg-emerald-600 text-white border border-emerald-400/40 transition flex items-center gap-1.5" title="Download JSON Backup">
-          <svg class="w-3.5 h-3.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <button onclick="exportBackupJSON()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#1A1B20] hover:bg-[#22242B] text-white border border-[#2A8BEA]/50 transition flex items-center gap-1.5" title="Download JSON Backup">
+          <svg class="w-3.5 h-3.5 text-[#48CAED]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
           Export
         </button>
 
-        <label class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-700/80 hover:bg-emerald-600 text-white border border-emerald-400/40 transition cursor-pointer flex items-center gap-1.5" title="Restore from JSON Backup">
-          <svg class="w-3.5 h-3.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+        <label class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#1A1B20] hover:bg-[#22242B] text-white border border-[#2A8BEA]/50 transition cursor-pointer flex items-center gap-1.5" title="Restore from JSON Backup">
+          <svg class="w-3.5 h-3.5 text-[#48CAED]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
           Import
           <input id="import-json-input" type="file" accept=".json" class="hidden" onchange="importBackupJSON(event)" />
         </label>
 
-        <button onclick="promptNewBillingMonth()" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-amber-400 hover:bg-amber-300 text-emerald-950 border border-amber-200 transition shadow-sm">
+        <button onclick="promptNewBillingMonth()" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold bg-[#FF9D00] hover:bg-[#FFB033] text-[#0D0D0D] transition shadow-sm">
           Start New Billing Month
         </button>
       </div>
@@ -448,19 +389,19 @@
 
     <!-- 5-Tab Navigation Bar -->
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 flex overflow-x-auto gap-1.5 pb-2.5 pt-1">
-      <button id="nav-tab-simulator" onclick="switchTab('simulator')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition whitespace-nowrap flex items-center gap-2 bg-white text-emerald-950 shadow-sm">
+      <button id="nav-tab-simulator" onclick="switchTab('simulator')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition whitespace-nowrap flex items-center gap-2 bg-[#FF9D00] text-[#0D0D0D] shadow-sm">
         <span>1. Margin &amp; Cash-Flow Simulator</span>
       </button>
-      <button id="nav-tab-ledger" onclick="switchTab('ledger')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-emerald-950/50 text-emerald-100 hover:bg-emerald-700/70">
+      <button id="nav-tab-ledger" onclick="switchTab('ledger')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-[#1A1B20] text-slate-300 hover:bg-[#22242B]">
         <span>2. Master Client Payment &amp; Settlement Ledger</span>
       </button>
-      <button id="nav-tab-founder" onclick="switchTab('founder')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-emerald-950/50 text-emerald-100 hover:bg-emerald-700/70">
+      <button id="nav-tab-founder" onclick="switchTab('founder')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-[#1A1B20] text-slate-300 hover:bg-[#22242B]">
         <span>3. Founder Payout Statement</span>
       </button>
-      <button id="nav-tab-csm" onclick="switchTab('csm')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-emerald-950/50 text-emerald-100 hover:bg-emerald-700/70">
+      <button id="nav-tab-csm" onclick="switchTab('csm')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-[#1A1B20] text-slate-300 hover:bg-[#22242B]">
         <span>4. CSM Payout Statement</span>
       </button>
-      <button id="nav-tab-designer" onclick="switchTab('designer')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-emerald-950/50 text-emerald-100 hover:bg-emerald-700/70">
+      <button id="nav-tab-designer" onclick="switchTab('designer')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-[#1A1B20] text-slate-300 hover:bg-[#22242B]">
         <span>5. Funnel Designer Payout Statement</span>
       </button>
     </nav>
@@ -475,97 +416,97 @@
     <section id="tab-simulator" class="tab-panel space-y-6">
       <div class="wealth-card rounded-2xl p-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
-          <h1 class="text-xl font-extrabold text-emerald-950">Agency Margin &amp; Cash-Flow Simulator</h1>
-          <p class="text-xs text-emerald-800/80 mt-0.5">Model monthly deal volume, Client Success Manager (CSM) accelerators, Highest-Tier Funnel Designer base + build bonuses, and self-promo ad spend.</p>
+          <h1 class="text-xl font-extrabold text-white">Agency Margin &amp; Cash-Flow Simulator</h1>
+          <p class="text-xs text-slate-400 mt-0.5">Model monthly deal volume, Client Success Manager (CSM) accelerators, Highest-Tier Funnel Designer base + build bonuses, and self-promo ad spend.</p>
         </div>
         <div class="flex flex-wrap gap-2">
-          <button onclick="applySimPreset('launch')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-clover-50 hover:bg-clover-100 text-emerald-900 border border-clover-500/30 transition">Month 1 Launch (1x T1)</button>
-          <button onclick="applySimPreset('steady')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 transition">Steady Growth (T1+T2+1M)</button>
-          <button onclick="applySimPreset('scale')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-gradient-to-r from-clover-600 to-teal-600 hover:from-clover-700 hover:to-teal-700 text-white shadow-sm transition">High Scale (T1+T2+T3+2M)</button>
-          <button onclick="applySimPreset('zero')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition">Zero Sales Stress Test</button>
+          <button onclick="applySimPreset('launch')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#0D0D0D] hover:bg-[#1E212B] text-[#48CAED] border border-[#48CAED]/40 transition">Month 1 Launch (1x T1)</button>
+          <button onclick="applySimPreset('steady')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#0D0D0D] hover:bg-[#1E212B] text-[#FF9D00] border border-[#FF9D00]/40 transition">Steady Growth (T1+T2+1M)</button>
+          <button onclick="applySimPreset('scale')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#2A8BEA] hover:bg-[#48CAED] hover:text-[#0D0D0D] text-white shadow-sm transition">High Scale (T1+T2+T3+2M)</button>
+          <button onclick="applySimPreset('zero')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#0D0D0D] hover:bg-[#1E212B] text-[#F73C5C] border border-[#F73C5C]/40 transition">Zero Sales Stress Test</button>
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div class="lg:col-span-5 space-y-5">
           <div class="wealth-card rounded-2xl p-5 space-y-3.5">
-            <h2 class="text-xs font-extrabold uppercase tracking-wider text-clover-700">Monthly Cleared Deal Volume</h2>
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-[#FF9D00]">Monthly Cleared Deal Volume</h2>
 
             <div class="wealth-subcard flex items-center justify-between p-3.5 rounded-xl">
               <div>
-                <div class="text-sm font-bold text-emerald-950">Tier 1 — Starter Funnel</div>
-                <div class="text-xs text-emerald-800/75 font-mono">$1,250 USD • Designer Base $250</div>
+                <div class="text-sm font-bold text-white">Tier 1 — Starter Funnel</div>
+                <div class="text-xs text-slate-400 font-mono">$1,250 USD • Designer Base $250</div>
               </div>
               <div class="flex items-center gap-2.5">
-                <button onclick="adjustSimCount('t1', -1)" class="w-8 h-8 rounded-lg bg-white hover:bg-clover-100 text-emerald-950 border border-clover-500/30 font-bold shadow-sm">-</button>
-                <span id="sim-t1-val" class="w-7 text-center font-mono font-extrabold text-clover-700">1</span>
-                <button onclick="adjustSimCount('t1', 1)" class="w-8 h-8 rounded-lg bg-clover-600 hover:bg-clover-700 text-white font-bold shadow-sm">+</button>
+                <button onclick="adjustSimCount('t1', -1)" class="w-8 h-8 rounded-lg bg-[#1A1B20] hover:bg-[#22242B] text-white border border-[#2E323E] font-bold">-</button>
+                <span id="sim-t1-val" class="w-7 text-center font-mono font-extrabold text-[#48CAED]">1</span>
+                <button onclick="adjustSimCount('t1', 1)" class="w-8 h-8 rounded-lg bg-[#2A8BEA] hover:bg-[#48CAED] hover:text-[#0D0D0D] text-white font-bold">+</button>
               </div>
             </div>
 
             <div class="wealth-subcard flex items-center justify-between p-3.5 rounded-xl">
               <div>
-                <div class="text-sm font-bold text-emerald-950">Tier 2 — Growth System</div>
-                <div class="text-xs text-emerald-800/75 font-mono">$1,750 USD • Designer Base $300</div>
+                <div class="text-sm font-bold text-white">Tier 2 — Growth System</div>
+                <div class="text-xs text-slate-400 font-mono">$1,750 USD • Designer Base $300</div>
               </div>
               <div class="flex items-center gap-2.5">
-                <button onclick="adjustSimCount('t2', -1)" class="w-8 h-8 rounded-lg bg-white hover:bg-clover-100 text-emerald-950 border border-clover-500/30 font-bold shadow-sm">-</button>
-                <span id="sim-t2-val" class="w-7 text-center font-mono font-extrabold text-clover-700">1</span>
-                <button onclick="adjustSimCount('t2', 1)" class="w-8 h-8 rounded-lg bg-clover-600 hover:bg-clover-700 text-white font-bold shadow-sm">+</button>
+                <button onclick="adjustSimCount('t2', -1)" class="w-8 h-8 rounded-lg bg-[#1A1B20] hover:bg-[#22242B] text-white border border-[#2E323E] font-bold">-</button>
+                <span id="sim-t2-val" class="w-7 text-center font-mono font-extrabold text-[#48CAED]">1</span>
+                <button onclick="adjustSimCount('t2', 1)" class="w-8 h-8 rounded-lg bg-[#2A8BEA] hover:bg-[#48CAED] hover:text-[#0D0D0D] text-white font-bold">+</button>
               </div>
             </div>
 
             <div class="wealth-subcard flex items-center justify-between p-3.5 rounded-xl">
               <div>
-                <div class="text-sm font-bold text-emerald-950">Tier 3 — Full Scale Architecture</div>
-                <div class="text-xs text-emerald-800/75 font-mono">$2,250 USD • Designer Base $350</div>
+                <div class="text-sm font-bold text-white">Tier 3 — Full Scale Architecture</div>
+                <div class="text-xs text-slate-400 font-mono">$2,250 USD • Designer Base $350</div>
               </div>
               <div class="flex items-center gap-2.5">
-                <button onclick="adjustSimCount('t3', -1)" class="w-8 h-8 rounded-lg bg-white hover:bg-clover-100 text-emerald-950 border border-clover-500/30 font-bold shadow-sm">-</button>
-                <span id="sim-t3-val" class="w-7 text-center font-mono font-extrabold text-clover-700">0</span>
-                <button onclick="adjustSimCount('t3', 1)" class="w-8 h-8 rounded-lg bg-clover-600 hover:bg-clover-700 text-white font-bold shadow-sm">+</button>
+                <button onclick="adjustSimCount('t3', -1)" class="w-8 h-8 rounded-lg bg-[#1A1B20] hover:bg-[#22242B] text-white border border-[#2E323E] font-bold">-</button>
+                <span id="sim-t3-val" class="w-7 text-center font-mono font-extrabold text-[#48CAED]">0</span>
+                <button onclick="adjustSimCount('t3', 1)" class="w-8 h-8 rounded-lg bg-[#2A8BEA] hover:bg-[#48CAED] hover:text-[#0D0D0D] text-white font-bold">+</button>
               </div>
             </div>
 
             <div class="wealth-subcard flex items-center justify-between p-3.5 rounded-xl">
               <div>
-                <div class="text-sm font-bold text-emerald-950">Monthly Maintenance Retainer</div>
-                <div class="text-xs text-emerald-800/75 font-mono">$300/mo • 25% CSM • Covered in Designer Base</div>
+                <div class="text-sm font-bold text-white">Monthly Maintenance Retainer</div>
+                <div class="text-xs text-slate-400 font-mono">$300/mo • 25% CSM • Covered in Designer Base</div>
               </div>
               <div class="flex items-center gap-2.5">
-                <button onclick="adjustSimCount('maint', -1)" class="w-8 h-8 rounded-lg bg-white hover:bg-clover-100 text-emerald-950 border border-clover-500/30 font-bold shadow-sm">-</button>
-                <span id="sim-maint-val" class="w-7 text-center font-mono font-extrabold text-clover-700">1</span>
-                <button onclick="adjustSimCount('maint', 1)" class="w-8 h-8 rounded-lg bg-clover-600 hover:bg-clover-700 text-white font-bold shadow-sm">+</button>
+                <button onclick="adjustSimCount('maint', -1)" class="w-8 h-8 rounded-lg bg-[#1A1B20] hover:bg-[#22242B] text-white border border-[#2E323E] font-bold">-</button>
+                <span id="sim-maint-val" class="w-7 text-center font-mono font-extrabold text-[#48CAED]">1</span>
+                <button onclick="adjustSimCount('maint', 1)" class="w-8 h-8 rounded-lg bg-[#2A8BEA] hover:bg-[#48CAED] hover:text-[#0D0D0D] text-white font-bold">+</button>
               </div>
             </div>
 
             <div class="wealth-subcard flex items-center justify-between p-3.5 rounded-xl">
               <div>
-                <div class="text-sm font-bold text-emerald-950">Paid Ads Management (Optional Add-On)</div>
-                <div class="text-xs text-emerald-800/75 font-mono">$500/mo • 25% CSM • Founder Fulfilled</div>
+                <div class="text-sm font-bold text-white">Paid Ads Management (Optional Add-On)</div>
+                <div class="text-xs text-slate-400 font-mono">$500/mo • 25% CSM • Founder Fulfilled</div>
               </div>
               <div class="flex items-center gap-2.5">
-                <button onclick="adjustSimCount('adsMgmt', -1)" class="w-8 h-8 rounded-lg bg-white hover:bg-clover-100 text-emerald-950 border border-clover-500/30 font-bold shadow-sm">-</button>
-                <span id="sim-adsMgmt-val" class="w-7 text-center font-mono font-extrabold text-clover-700">0</span>
-                <button onclick="adjustSimCount('adsMgmt', 1)" class="w-8 h-8 rounded-lg bg-clover-600 hover:bg-clover-700 text-white font-bold shadow-sm">+</button>
+                <button onclick="adjustSimCount('adsMgmt', -1)" class="w-8 h-8 rounded-lg bg-[#1A1B20] hover:bg-[#22242B] text-white border border-[#2E323E] font-bold">-</button>
+                <span id="sim-adsMgmt-val" class="w-7 text-center font-mono font-extrabold text-[#48CAED]">0</span>
+                <button onclick="adjustSimCount('adsMgmt', 1)" class="w-8 h-8 rounded-lg bg-[#2A8BEA] hover:bg-[#48CAED] hover:text-[#0D0D0D] text-white font-bold">+</button>
               </div>
             </div>
           </div>
 
           <div class="wealth-card rounded-2xl p-5 space-y-4">
             <div class="flex items-center justify-between">
-              <h2 class="text-xs font-extrabold uppercase tracking-wider text-clover-700">Agency Self-Promo Ad Spend</h2>
-              <span id="sim-adspend-display" class="font-mono text-base font-extrabold text-emerald-950">$500</span>
+              <h2 class="text-xs font-extrabold uppercase tracking-wider text-[#F73C5C]">Agency Self-Promo Ad Spend</h2>
+              <span id="sim-adspend-display" class="font-mono text-base font-extrabold text-[#FF9D00]">$500</span>
             </div>
             <input id="sim-adspend-slider" type="range" min="0" max="5000" step="50" value="500" class="w-full" oninput="updateSimulator()" />
             <div class="grid grid-cols-2 gap-3 pt-1">
               <div class="wealth-subcard p-3 rounded-xl">
-                <div class="text-[11px] text-emerald-800/80 font-medium">Effective CAC (New Builds)</div>
-                <div id="sim-cac-val" class="font-mono text-sm font-extrabold text-emerald-950 mt-0.5">$250.00</div>
+                <div class="text-[11px] text-slate-400 font-medium">Effective CAC (New Builds)</div>
+                <div id="sim-cac-val" class="font-mono text-sm font-extrabold text-white mt-0.5">$250.00</div>
               </div>
               <div class="wealth-subcard p-3 rounded-xl">
-                <div class="text-[11px] text-emerald-800/80 font-medium">Gross Revenue ROAS</div>
-                <div id="sim-roas-val" class="font-mono text-sm font-extrabold text-clover-600 mt-0.5">6.60x</div>
+                <div class="text-[11px] text-slate-400 font-medium">Gross Revenue ROAS</div>
+                <div id="sim-roas-val" class="font-mono text-sm font-extrabold text-[#48CAED] mt-0.5">6.60x</div>
               </div>
             </div>
           </div>
@@ -573,48 +514,48 @@
 
         <div class="lg:col-span-7 space-y-5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="wealth-card rounded-2xl p-5 border-t-4 border-t-clover-500">
-              <div class="text-xs font-bold uppercase tracking-wider text-emerald-800/75">Gross Cleared Revenue</div>
-              <div id="sim-gross-usd" class="text-2xl font-extrabold font-mono text-emerald-950 mt-1">$3,300.00</div>
-              <div id="sim-gross-php" class="text-xs font-mono font-semibold text-clover-600 mt-0.5">₱210,111.00 PHP</div>
+            <div class="wealth-card rounded-2xl p-5 border-t-4 border-t-[#48CAED]">
+              <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Gross Cleared Revenue</div>
+              <div id="sim-gross-usd" class="text-2xl font-extrabold font-mono text-white mt-1">$3,300.00</div>
+              <div id="sim-gross-php" class="text-xs font-mono font-semibold text-[#48CAED] mt-0.5">₱210,111.00 PHP</div>
             </div>
 
-            <!-- Hero Emerald, Teal & Warm Champagne Gold Prosperity Card -->
-            <div class="bg-gradient-to-br from-emerald-800 via-emerald-700 to-teal-800 border-2 border-amber-300 rounded-2xl p-5 gold-glow">
+            <!-- Hero Founder Take-Home Card -->
+            <div class="bg-gradient-to-br from-[#141417] via-[#171A24] to-[#1A151C] border-2 border-[#FF9D00] rounded-2xl p-5 gold-glow">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-amber-200">Founder Net Take-Home</span>
-                <span id="sim-margin-pct" class="text-xs font-mono font-extrabold px-2.5 py-0.5 rounded-full bg-amber-300 text-emerald-950 shadow-sm">43.0%</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#FF9D00]">Founder Net Take-Home</span>
+                <span id="sim-margin-pct" class="text-xs font-mono font-extrabold px-2.5 py-0.5 rounded-full bg-[#FF9D00] text-[#0D0D0D] shadow-sm">43.0%</span>
               </div>
               <div id="sim-founder-usd" class="text-2xl font-extrabold font-mono text-white mt-1">$1,420.00</div>
-              <div id="sim-founder-php" class="text-xs font-mono text-emerald-100 mt-0.5">₱90,411.40 PHP (After Ad Spend)</div>
+              <div id="sim-founder-php" class="text-xs font-mono text-[#48CAED] mt-0.5">₱90,411.40 PHP (After Ad Spend)</div>
             </div>
 
-            <div class="wealth-card rounded-2xl p-5 border-t-4 border-t-teal-500">
-              <div class="text-xs font-bold uppercase tracking-wider text-teal-800/80">Client Success Manager (CSM)</div>
-              <div id="sim-csm-usd" class="text-2xl font-extrabold font-mono text-emerald-950 mt-1">$825.00</div>
-              <div id="sim-csm-php" class="text-xs font-mono text-teal-700 mt-0.5">₱52,527.75 PHP</div>
+            <div class="wealth-card rounded-2xl p-5 border-t-4 border-t-[#2A8BEA]">
+              <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Client Success Manager (CSM)</div>
+              <div id="sim-csm-usd" class="text-2xl font-extrabold font-mono text-white mt-1">$825.00</div>
+              <div id="sim-csm-php" class="text-xs font-mono text-[#2A8BEA] mt-0.5">₱52,527.75 PHP</div>
             </div>
 
-            <div class="wealth-card rounded-2xl p-5 border-t-4 border-t-amber-400">
+            <div class="wealth-card rounded-2xl p-5 border-t-4 border-t-[#F73C5C]">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-amber-900/80">Funnel Designer Total</span>
-                <span id="sim-designer-badge" class="text-[11px] font-mono font-bold text-amber-900 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded">Base $300 + $50</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Funnel Designer Total</span>
+                <span id="sim-designer-badge" class="text-[11px] font-mono font-bold text-[#F73C5C] bg-[#F73C5C]/15 border border-[#F73C5C]/40 px-2 py-0.5 rounded">Base $300 + $50</span>
               </div>
-              <div id="sim-designer-usd" class="text-2xl font-extrabold font-mono text-emerald-950 mt-1">$350.00</div>
-              <div id="sim-designer-php" class="text-xs font-mono text-amber-800/80 mt-0.5">₱22,284.50 PHP</div>
+              <div id="sim-designer-usd" class="text-2xl font-extrabold font-mono text-white mt-1">$350.00</div>
+              <div id="sim-designer-php" class="text-xs font-mono text-slate-400 mt-0.5">₱22,284.50 PHP</div>
             </div>
           </div>
 
           <div class="wealth-card rounded-2xl p-5 space-y-4">
-            <div class="flex items-center justify-between border-b border-clover-100 pb-3">
-              <h3 class="text-xs font-extrabold uppercase tracking-wider text-emerald-950">Deal-by-Deal Waterfall &amp; Locked Allocation Rules</h3>
-              <span class="text-xs font-mono text-emerald-800">10% Overhead: <strong id="sim-overhead-usd" class="text-emerald-950">$330.00</strong></span>
+            <div class="flex items-center justify-between border-b border-[#262932] pb-3">
+              <h3 class="text-xs font-extrabold uppercase tracking-wider text-white">Deal-by-Deal Waterfall &amp; Locked Allocation Rules</h3>
+              <span class="text-xs font-mono text-slate-400">10% Overhead: <strong id="sim-overhead-usd" class="text-[#FF9D00]">$330.00</strong></span>
             </div>
 
             <div class="overflow-x-auto">
               <table class="w-full text-left border-collapse">
                 <thead>
-                  <tr class="text-[11px] uppercase tracking-wider text-emerald-800/75 border-b border-clover-100">
+                  <tr class="text-[11px] uppercase tracking-wider text-slate-400 border-b border-[#262932]">
                     <th class="py-2 pr-3">Deal #</th>
                     <th class="py-2 px-3">Package</th>
                     <th class="py-2 px-3 text-right">Settlement</th>
@@ -622,15 +563,15 @@
                     <th class="py-2 pl-3 text-right">CSM Payout</th>
                   </tr>
                 </thead>
-                <tbody id="sim-waterfall-body" class="divide-y divide-clover-100 text-xs text-emerald-950">
+                <tbody id="sim-waterfall-body" class="divide-y divide-[#23262F] text-xs text-slate-200">
                 </tbody>
               </table>
             </div>
 
-            <div class="wealth-subcard rounded-xl p-3.5 text-xs text-emerald-900 space-y-1.5 leading-relaxed">
-              <div><strong class="text-clover-700">• Client Success Manager (CSM):</strong> 25% on Deals #1 &amp; #2 per calendar month; accelerates to 30% on Deal #3 and every subsequent deal in that month + 25% on Monthly Maintenance / Paid Ads retainers.</div>
-              <div><strong class="text-clover-700">• Funnel Designer Highest-Tier Base + Bonus:</strong> Monthly base automatically scales to $250 (Tier 1), $300 (Tier 2), or $350 (Tier 3), or $0 if 0 cleared builds exist, PLUS $50 bonus for each additional cleared &amp; approved new funnel build beyond the 1st build. Maintenance updates are covered under the monthly base.</div>
-              <div><strong class="text-clover-700">• Agency Overhead &amp; Buffer:</strong> 10% of gross cleared revenue retained for software, Stripe/Wise fees, and reserve buffer.</div>
+            <div class="wealth-subcard rounded-xl p-3.5 text-xs text-slate-300 space-y-1.5 leading-relaxed">
+              <div><strong class="text-[#48CAED]">• Client Success Manager (CSM):</strong> 25% on Deals #1 &amp; #2 per calendar month; accelerates to 30% on Deal #3 and every subsequent deal in that month + 25% on Monthly Maintenance / Paid Ads retainers.</div>
+              <div><strong class="text-[#FF9D00]">• Funnel Designer Highest-Tier Base + Bonus:</strong> Monthly base automatically scales to $250 (Tier 1), $300 (Tier 2), or $350 (Tier 3), or $0 if 0 cleared builds exist, PLUS $50 bonus for each additional cleared &amp; approved new funnel build beyond the 1st build. Maintenance updates are covered under the monthly base.</div>
+              <div><strong class="text-[#F73C5C]">• Agency Overhead &amp; Buffer:</strong> 10% of gross cleared revenue retained for software, Stripe/Wise fees, and reserve buffer.</div>
             </div>
           </div>
         </div>
@@ -641,18 +582,18 @@
          TAB 2: MASTER CLIENT PAYMENT & SETTLEMENT LEDGER
          ======================================================================== -->
     <section id="tab-ledger" class="tab-panel hidden space-y-6">
-      <div class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 border-2 border-amber-300/80 rounded-2xl p-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 gold-glow">
+      <div class="bg-[#141417] border-2 border-[#2A8BEA]/70 rounded-2xl p-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 gold-glow">
         <div>
           <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-amber-300 animate-pulse"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#FF9D00] animate-pulse"></span>
             <h1 class="text-lg sm:text-xl font-extrabold text-white">Master Client Payment &amp; Settlement Ledger</h1>
           </div>
-          <p class="text-xs text-emerald-100 mt-1">Single source of truth. Strict <strong class="text-amber-200">100% Paid (Cleared)</strong> Pay-When-Paid enforcement across all Payout Statements.</p>
+          <p class="text-xs text-slate-300 mt-1">Single source of truth. Strict <strong class="text-[#48CAED]">100% Paid (Cleared)</strong> Pay-When-Paid enforcement across all Payout Statements.</p>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-white p-2 rounded-xl shadow-md">
-          <label for="global-cutoff-selector" class="text-xs font-bold text-emerald-950 whitespace-nowrap px-2">Active Payout Window:</label>
-          <select id="global-cutoff-selector" onchange="syncCutoffWindow(this.value)" class="bg-clover-50 border border-clover-400/50 rounded-lg px-3 py-1.5 text-xs font-bold text-emerald-950 focus:outline-none">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-[#0D0D0D] border border-[#2E323E] p-2 rounded-xl">
+          <label for="global-cutoff-selector" class="text-xs font-bold text-[#FF9D00] whitespace-nowrap px-2">Active Payout Window:</label>
+          <select id="global-cutoff-selector" onchange="syncCutoffWindow(this.value)" class="bg-[#141417] border border-[#2E323E] rounded-lg px-3 py-1.5 text-xs font-bold text-white focus:outline-none">
             <option value="cycle1">Cycle 1: 1st–12th Cut-Off → Paid 15th</option>
             <option value="cycle2">Cycle 2: 13th–27th Cut-Off → Paid 30th</option>
             <option value="full">Full Month Consolidated (1st–31st)</option>
@@ -661,80 +602,47 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3.5">
-        <div class="wealth-card rounded-xl p-4 border-l-4 border-l-clover-500">
-          <div class="text-[11px] font-bold uppercase text-emerald-800/75">Total Cleared Rev</div>
-          <div id="kpi-cleared-rev" class="text-lg font-extrabold font-mono text-emerald-950 mt-1">$0.00</div>
-          <div id="kpi-cleared-rev-php" class="text-[11px] font-mono font-semibold text-clover-600">₱0.00</div>
+        <div class="wealth-card rounded-xl p-4 border-l-4 border-l-[#48CAED]">
+          <div class="text-[11px] font-bold uppercase text-slate-400">Total Cleared Rev</div>
+          <div id="kpi-cleared-rev" class="text-lg font-extrabold font-mono text-white mt-1">$0.00</div>
+          <div id="kpi-cleared-rev-php" class="text-[11px] font-mono font-semibold text-[#48CAED]">₱0.00</div>
         </div>
-        <div class="wealth-card rounded-xl p-4 border-l-4 border-l-amber-400">
-          <div class="text-[11px] font-bold uppercase text-amber-700">50% Deposits Held</div>
-          <div id="kpi-held-deposits" class="text-lg font-extrabold font-mono text-amber-600 mt-1">$0.00</div>
-          <div class="text-[11px] text-gray-500">Excluded until 100%</div>
+        <div class="wealth-card rounded-xl p-4 border-l-4 border-l-[#F73C5C]">
+          <div class="text-[11px] font-bold uppercase text-[#F73C5C]">50% Deposits Held</div>
+          <div id="kpi-held-deposits" class="text-lg font-extrabold font-mono text-[#F73C5C] mt-1">$0.00</div>
+          <div class="text-[11px] text-slate-400">Excluded until 100%</div>
         </div>
-        <div class="wealth-card rounded-xl p-4 border-l-4 border-l-teal-500">
-          <div class="text-[11px] font-bold uppercase text-teal-800/80">Full-Mo Designer Tier</div>
-          <div id="kpi-highest-tier" class="text-lg font-extrabold font-mono text-teal-700 mt-1">$0 Base</div>
-          <div id="kpi-highest-tier-label" class="text-[11px] text-gray-500">No cleared builds</div>
+        <div class="wealth-card rounded-xl p-4 border-l-4 border-l-[#2A8BEA]">
+          <div class="text-[11px] font-bold uppercase text-slate-400">Full-Mo Designer Tier</div>
+          <div id="kpi-highest-tier" class="text-lg font-extrabold font-mono text-[#2A8BEA] mt-1">$0 Base</div>
+          <div id="kpi-highest-tier-label" class="text-[11px] text-slate-400">No cleared builds</div>
         </div>
-        <div class="wealth-card rounded-xl p-4 border-l-4 border-l-emerald-500">
-          <div class="text-[11px] font-bold uppercase text-emerald-800/75">CSM Earned (Window)</div>
-          <div id="kpi-csm-earned" class="text-lg font-extrabold font-mono text-emerald-950 mt-1">$0.00</div>
-          <div id="kpi-csm-earned-php" class="text-[11px] font-mono text-gray-500">₱0.00</div>
+        <div class="wealth-card rounded-xl p-4 border-l-4 border-l-[#48CAED]">
+          <div class="text-[11px] font-bold uppercase text-slate-400">CSM Earned (Window)</div>
+          <div id="kpi-csm-earned" class="text-lg font-extrabold font-mono text-white mt-1">$0.00</div>
+          <div id="kpi-csm-earned-php" class="text-[11px] font-mono text-slate-400">₱0.00</div>
         </div>
-        <div class="wealth-card rounded-xl p-4 border-l-4 border-l-amber-500">
-          <div class="text-[11px] font-bold uppercase text-amber-800/80">Designer (Window)</div>
-          <div id="kpi-designer-earned" class="text-lg font-extrabold font-mono text-emerald-950 mt-1">$0.00</div>
-          <div id="kpi-designer-earned-php" class="text-[11px] font-mono text-gray-500">₱0.00</div>
+        <div class="wealth-card rounded-xl p-4 border-l-4 border-l-[#FF9D00]">
+          <div class="text-[11px] font-bold uppercase text-slate-400">Designer (Window)</div>
+          <div id="kpi-designer-earned" class="text-lg font-extrabold font-mono text-white mt-1">$0.00</div>
+          <div id="kpi-designer-earned-php" class="text-[11px] font-mono text-slate-400">₱0.00</div>
         </div>
-        <div class="bg-gradient-to-br from-emerald-800 to-teal-800 border-2 border-amber-300 rounded-xl p-4 shadow-md">
-          <div class="text-[11px] font-bold uppercase text-amber-200">Founder Net (Month)</div>
+        <div class="bg-[#141417] border-2 border-[#FF9D00] rounded-xl p-4 shadow-md">
+          <div class="text-[11px] font-bold uppercase text-[#FF9D00]">Founder Net (Month)</div>
           <div id="kpi-founder-net" class="text-lg font-extrabold font-mono text-white mt-1">$0.00</div>
-          <div id="kpi-founder-net-php" class="text-[11px] font-mono text-emerald-100">₱0.00</div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3.5">
-        <div class="wealth-card rounded-xl p-4">
-          <div class="text-[11px] font-bold uppercase text-emerald-800/75">Total Cleared Rev</div>
-          <div id="kpi-cleared-rev" class="text-lg font-extrabold font-mono text-emerald-950 mt-1">$0.00</div>
-          <div id="kpi-cleared-rev-php" class="text-[11px] font-mono font-semibold text-clover-600">₱0.00</div>
-        </div>
-        <div class="wealth-card rounded-xl p-4">
-          <div class="text-[11px] font-bold uppercase text-amber-700">50% Deposits Held</div>
-          <div id="kpi-held-deposits" class="text-lg font-extrabold font-mono text-amber-600 mt-1">$0.00</div>
-          <div class="text-[11px] text-gray-500">Excluded until 100%</div>
-        </div>
-        <div class="wealth-card rounded-xl p-4">
-          <div class="text-[11px] font-bold uppercase text-emerald-800/75">Full-Mo Designer Tier</div>
-          <div id="kpi-highest-tier" class="text-lg font-extrabold font-mono text-clover-700 mt-1">$0 Base</div>
-          <div id="kpi-highest-tier-label" class="text-[11px] text-gray-500">No cleared builds</div>
-        </div>
-        <div class="wealth-card rounded-xl p-4">
-          <div class="text-[11px] font-bold uppercase text-emerald-800/75">CSM Earned (Window)</div>
-          <div id="kpi-csm-earned" class="text-lg font-extrabold font-mono text-emerald-950 mt-1">$0.00</div>
-          <div id="kpi-csm-earned-php" class="text-[11px] font-mono text-gray-500">₱0.00</div>
-        </div>
-        <div class="wealth-card rounded-xl p-4">
-          <div class="text-[11px] font-bold uppercase text-emerald-800/75">Designer (Window)</div>
-          <div id="kpi-designer-earned" class="text-lg font-extrabold font-mono text-emerald-950 mt-1">$0.00</div>
-          <div id="kpi-designer-earned-php" class="text-[11px] font-mono text-gray-500">₱0.00</div>
-        </div>
-        <div class="bg-obsidian-900 border-2 border-white rounded-xl p-4 shadow-lg">
-          <div class="text-[11px] font-bold uppercase text-clover-100">Founder Net (Month)</div>
-          <div id="kpi-founder-net" class="text-lg font-extrabold font-mono text-white mt-1">$0.00</div>
-          <div id="kpi-founder-net-php" class="text-[11px] font-mono text-clover-400">₱0.00</div>
+          <div id="kpi-founder-net-php" class="text-[11px] font-mono text-[#48CAED]">₱0.00</div>
         </div>
       </div>
 
       <div class="wealth-card rounded-2xl p-5">
-        <h2 class="text-xs font-extrabold uppercase tracking-wider text-clover-700 mb-3.5">Add Client Deal / Retainer Entry</h2>
+        <h2 class="text-xs font-extrabold uppercase tracking-wider text-[#FF9D00] mb-3.5">Add Client Deal / Retainer Entry</h2>
         <form id="add-deal-form" onsubmit="handleAddDeal(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
           <div class="lg:col-span-2">
-            <label class="block text-[11px] font-semibold text-emerald-900 mb-1">Client / Business Name</label>
+            <label class="block text-[11px] font-semibold text-slate-300 mb-1">Client / Business Name</label>
             <input id="deal-client-name" type="text" required placeholder="e.g., Apex Dental Clinic" class="wealth-input w-full rounded-lg px-3 py-2 text-xs focus:outline-none" />
           </div>
           <div>
-            <label class="block text-[11px] font-semibold text-emerald-900 mb-1">Package Tier</label>
+            <label class="block text-[11px] font-semibold text-slate-300 mb-1">Package Tier</label>
             <select id="deal-tier" class="wealth-input w-full rounded-lg px-3 py-2 text-xs font-medium focus:outline-none">
               <option value="T1">Tier 1 — Starter ($1,250)</option>
               <option value="T2">Tier 2 — Growth ($1,750)</option>
@@ -743,7 +651,7 @@
             </select>
           </div>
           <div>
-            <label class="block text-[11px] font-semibold text-emerald-900 mb-1">Payment Status</label>
+            <label class="block text-[11px] font-semibold text-slate-300 mb-1">Payment Status</label>
             <select id="deal-payment-status" class="wealth-input w-full rounded-lg px-3 py-2 text-xs font-medium focus:outline-none">
               <option value="cleared">100% Paid (Cleared)</option>
               <option value="deposit">50% Deposit Paid</option>
@@ -751,18 +659,18 @@
             </select>
           </div>
           <div>
-            <label class="block text-[11px] font-semibold text-emerald-900 mb-1">Cleared Day (1–31)</label>
+            <label class="block text-[11px] font-semibold text-slate-300 mb-1">Cleared Day (1–31)</label>
             <input id="deal-cleared-day" type="number" min="1" max="31" value="10" required class="wealth-input w-full rounded-lg px-3 py-2 text-xs font-mono font-bold focus:outline-none" />
           </div>
           <div>
-            <label class="block text-[11px] font-semibold text-emerald-900 mb-1">Designer Build Status</label>
+            <label class="block text-[11px] font-semibold text-slate-300 mb-1">Designer Build Status</label>
             <select id="deal-build-status" class="wealth-input w-full rounded-lg px-3 py-2 text-xs font-medium focus:outline-none">
               <option value="approved">Approved &amp; Functional ✓</option>
               <option value="in_progress">In Progress</option>
             </select>
           </div>
           <div class="sm:col-span-2 lg:col-span-6 flex justify-end pt-1">
-            <button type="submit" class="px-5 py-2 rounded-lg text-xs font-bold bg-clover-600 hover:bg-clover-700 text-white transition shadow-md">
+            <button type="submit" class="px-5 py-2 rounded-lg text-xs font-extrabold bg-[#FF9D00] hover:bg-[#FFB033] text-[#0D0D0D] transition shadow-md">
               + Record Client Entry
             </button>
           </div>
@@ -772,15 +680,15 @@
       <div class="wealth-card rounded-2xl p-5 space-y-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <div class="flex flex-wrap gap-1.5" id="ledger-filter-pills">
-            <button onclick="setLedgerFilter('all')" data-filter="all" class="filter-pill px-3 py-1.5 rounded-full text-xs font-bold bg-clover-600 text-white">All Deals</button>
-            <button onclick="setLedgerFilter('cleared')" data-filter="cleared" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-clover-50 text-emerald-900 hover:bg-clover-100">100% Paid (Cleared)</button>
-            <button onclick="setLedgerFilter('deposit')" data-filter="deposit" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-clover-50 text-emerald-900 hover:bg-clover-100">50% Deposit Held</button>
-            <button onclick="setLedgerFilter('cycle1')" data-filter="cycle1" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-clover-50 text-emerald-900 hover:bg-clover-100">Cycle 1: 1st–12th → Paid 15th</button>
-            <button onclick="setLedgerFilter('cycle2')" data-filter="cycle2" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-clover-50 text-emerald-900 hover:bg-clover-100">Cycle 2: 13th–27th → Paid 30th</button>
-            <button onclick="setLedgerFilter('rollover')" data-filter="rollover" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-clover-50 text-emerald-900 hover:bg-clover-100">28th+ Rollover</button>
+            <button onclick="setLedgerFilter('all')" data-filter="all" class="filter-pill px-3 py-1.5 rounded-full text-xs font-bold bg-[#FF9D00] text-[#0D0D0D]">All Deals</button>
+            <button onclick="setLedgerFilter('cleared')" data-filter="cleared" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-[#0D0D0D] text-slate-300 hover:bg-[#1E212B]">100% Paid (Cleared)</button>
+            <button onclick="setLedgerFilter('deposit')" data-filter="deposit" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-[#0D0D0D] text-slate-300 hover:bg-[#1E212B]">50% Deposit Held</button>
+            <button onclick="setLedgerFilter('cycle1')" data-filter="cycle1" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-[#0D0D0D] text-slate-300 hover:bg-[#1E212B]">Cycle 1: 1st–12th → Paid 15th</button>
+            <button onclick="setLedgerFilter('cycle2')" data-filter="cycle2" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-[#0D0D0D] text-slate-300 hover:bg-[#1E212B]">Cycle 2: 13th–27th → Paid 30th</button>
+            <button onclick="setLedgerFilter('rollover')" data-filter="rollover" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-[#0D0D0D] text-slate-300 hover:bg-[#1E212B]">28th+ Rollover</button>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-xs font-semibold text-emerald-900">Sort by:</span>
+            <span class="text-xs font-semibold text-slate-400">Sort by:</span>
             <select id="ledger-sort-select" onchange="renderLedger()" class="wealth-input rounded-lg px-2.5 py-1 text-xs font-semibold focus:outline-none">
               <option value="day_asc">Cleared Day (1 → 31)</option>
               <option value="amount_desc">Settlement Amount (High → Low)</option>
@@ -792,7 +700,7 @@
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse">
             <thead>
-              <tr class="text-[11px] uppercase tracking-wider text-emerald-800/75 border-b border-clover-100">
+              <tr class="text-[11px] uppercase tracking-wider text-slate-400 border-b border-[#262932]">
                 <th class="py-3 px-2">Rank</th>
                 <th class="py-3 px-3">Client Name</th>
                 <th class="py-3 px-3">Package Tier</th>
@@ -804,7 +712,7 @@
                 <th class="py-3 px-2 text-right">Action</th>
               </tr>
             </thead>
-            <tbody id="ledger-table-body" class="divide-y divide-clover-100 text-xs text-emerald-950">
+            <tbody id="ledger-table-body" class="divide-y divide-[#23262F] text-xs text-slate-200">
             </tbody>
           </table>
         </div>
@@ -815,43 +723,32 @@
          TAB 3: FOUNDER PAYOUT STATEMENT (PRINT-READY PDF)
          ======================================================================== -->
     <section id="tab-founder" class="tab-panel hidden space-y-5">
-      <div class="no-print bg-gradient-to-r from-emerald-800 to-teal-800 border border-amber-300/60 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-md">
+      <div class="no-print bg-[#141417] border border-[#2A8BEA]/60 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-md">
         <div>
           <h2 class="text-sm font-bold text-white">Founder — Executive Payout &amp; Net Take-Home Statement</h2>
-          <p class="text-xs text-emerald-100">Auto-reconciles cleared revenue in the active cut-off window minus contractor payouts, 10% agency overhead buffer, and self-promo ad spend.</p>
+          <p class="text-xs text-slate-400">Auto-reconciles cleared revenue in the active cut-off window minus contractor payouts, 10% agency overhead buffer, and self-promo ad spend.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2.5">
-          <button onclick="copyStatementSummary('founder')" class="px-4 py-2 rounded-lg text-xs font-semibold bg-emerald-950/60 hover:bg-emerald-950 text-white border border-emerald-400/40 transition">
+          <button onclick="copyStatementSummary('founder')" class="px-4 py-2 rounded-lg text-xs font-semibold bg-[#0D0D0D] hover:bg-[#1E212B] text-[#48CAED] border border-[#48CAED]/40 transition">
             Copy Payout Summary
           </button>
-          <button onclick="printPayoutStatement('founder')" class="px-4 py-2 rounded-lg text-xs font-extrabold bg-amber-300 hover:bg-amber-200 text-emerald-950 transition shadow-md flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <button onclick="printPayoutStatement('founder')" class="px-4 py-2 rounded-lg text-xs font-extrabold bg-[#FF9D00] hover:bg-[#FFB033] text-[#0D0D0D] transition shadow-md flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-[#0D0D0D]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
             Print / Save PDF Payout Statement
           </button>
         </div>
       </div>
 
       <div id="founder-statement-sheet" class="statement-sheet rounded-2xl overflow-hidden shadow-2xl">
-        <div class="statement-gold-bar h-2 w-full bg-gradient-to-r from-clover-600 via-clover-400 to-gold-500"></div>
+        <div class="statement-gold-bar h-2 w-full bg-gradient-to-r from-[#FF9D00] via-[#F73C5C] to-[#2A8BEA]"></div>
 
         <div class="p-6 sm:p-8 space-y-6">
-          <!-- Header -->
+          <!-- Header (Logo Removed) -->
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-obsidian-800 pb-6">
-            <div class="flex items-center gap-3.5">
-              <div class="w-11 h-11 rounded-xl bg-clover-50 border-2 border-clover-500 flex items-center justify-center shrink-0">
-                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="16" cy="16" r="13.5" stroke="#10B981" stroke-opacity="0.4" stroke-width="1.4"/>
-                  <rect x="4.5" y="13" width="2.2" height="6" rx="1.1" fill="#10B981"/>
-                  <rect x="25.3" y="13" width="2.2" height="6" rx="1.1" fill="#10B981"/>
-                  <path d="M16 5.5V26.5" stroke="#047857" stroke-width="2.4" stroke-linecap="round"/>
-                  <path d="M20.2 10.6C20.2 8.7 18.4 7.5 16 7.5C13.4 7.5 11.7 8.8 11.7 10.8C11.7 13 13.5 14 16.1 14.7C18.8 15.4 20.6 16.5 20.6 18.9C20.6 21.1 18.7 22.5 16 22.5C13.3 22.5 11.4 21.2 11.4 19.1" stroke="#064E3B" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div>
-                <div class="text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</div>
-                <div class="text-xs text-gray-400">Performance Funnel Architecture &amp; Client Growth Systems</div>
-                <div class="text-xs text-gold-400 font-semibold mt-0.5">Founder — Executive Net Distribution &amp; Payout Statement</div>
-              </div>
+            <div>
+              <div class="text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</div>
+              <div class="text-xs text-gray-400">Performance Funnel Architecture &amp; Client Growth Systems</div>
+              <div class="text-xs text-gold-400 font-semibold mt-0.5">Founder — Executive Net Distribution &amp; Payout Statement</div>
             </div>
 
             <div class="sm:text-right space-y-1">
@@ -1029,42 +926,31 @@
          TAB 4: CSM PAYOUT STATEMENT (PRINT-READY PDF)
          ======================================================================== -->
     <section id="tab-csm" class="tab-panel hidden space-y-5">
-      <div class="no-print bg-gradient-to-r from-emerald-800 to-teal-800 border border-amber-300/60 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-md">
+      <div class="no-print bg-[#141417] border border-[#2A8BEA]/60 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-md">
         <div>
           <h2 class="text-sm font-bold text-white">Client Success Manager (CSM) — Payout Statement Generator</h2>
-          <p class="text-xs text-emerald-100">Auto-populated from 100% Cleared deals in the selected cut-off window. Clean white-paper PDF ready.</p>
+          <p class="text-xs text-slate-400">Auto-populated from 100% Cleared deals in the selected cut-off window. Clean white-paper PDF ready.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2.5">
-          <button onclick="copyStatementSummary('csm')" class="px-4 py-2 rounded-lg text-xs font-semibold bg-emerald-950/60 hover:bg-emerald-950 text-white border border-emerald-400/40 transition">
+          <button onclick="copyStatementSummary('csm')" class="px-4 py-2 rounded-lg text-xs font-semibold bg-[#0D0D0D] hover:bg-[#1E212B] text-[#48CAED] border border-[#48CAED]/40 transition">
             Copy Payout Summary
           </button>
-          <button onclick="printPayoutStatement('csm')" class="px-4 py-2 rounded-lg text-xs font-extrabold bg-amber-300 hover:bg-amber-200 text-emerald-950 transition shadow-md flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <button onclick="printPayoutStatement('csm')" class="px-4 py-2 rounded-lg text-xs font-extrabold bg-[#FF9D00] hover:bg-[#FFB033] text-[#0D0D0D] transition shadow-md flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-[#0D0D0D]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
             Print / Save PDF Payout Statement
           </button>
         </div>
       </div>
 
       <div id="csm-statement-sheet" class="statement-sheet bg-obsidian-900 border border-obsidian-800 rounded-2xl overflow-hidden shadow-2xl">
-        <div class="statement-gold-bar h-1.5 w-full bg-gold-500"></div>
+        <div class="statement-gold-bar h-2 w-full bg-gradient-to-r from-[#2A8BEA] via-[#48CAED] to-[#FF9D00]"></div>
 
         <div class="p-6 sm:p-8 space-y-6">
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-obsidian-800 pb-6">
-            <div class="flex items-center gap-3.5">
-              <div class="w-11 h-11 rounded-xl bg-clover-50 border-2 border-clover-500 flex items-center justify-center shrink-0">
-                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="16" cy="16" r="13.5" stroke="#10B981" stroke-opacity="0.4" stroke-width="1.4"/>
-                  <rect x="4.5" y="13" width="2.2" height="6" rx="1.1" fill="#10B981"/>
-                  <rect x="25.3" y="13" width="2.2" height="6" rx="1.1" fill="#10B981"/>
-                  <path d="M16 5.5V26.5" stroke="#047857" stroke-width="2.4" stroke-linecap="round"/>
-                  <path d="M20.2 10.6C20.2 8.7 18.4 7.5 16 7.5C13.4 7.5 11.7 8.8 11.7 10.8C11.7 13 13.5 14 16.1 14.7C18.8 15.4 20.6 16.5 20.6 18.9C20.6 21.1 18.7 22.5 16 22.5C13.3 22.5 11.4 21.2 11.4 19.1" stroke="#064E3B" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div>
-                <div class="text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</div>
-                <div class="text-xs text-gray-400">Performance Funnel Architecture &amp; Client Growth Systems</div>
-                <div class="text-xs text-gold-400 font-semibold mt-0.5">Client Success Manager (CSM) — Monthly Payout Statement</div>
-              </div>
+            <div>
+              <div class="text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</div>
+              <div class="text-xs text-gray-400">Performance Funnel Architecture &amp; Client Growth Systems</div>
+              <div class="text-xs text-gold-400 font-semibold mt-0.5">Client Success Manager (CSM) — Monthly Payout Statement</div>
             </div>
 
             <div class="sm:text-right space-y-1">
@@ -1211,42 +1097,31 @@
          TAB 5: FUNNEL DESIGNER PAYOUT STATEMENT (PRINT-READY PDF)
          ======================================================================== -->
     <section id="tab-designer" class="tab-panel hidden space-y-5">
-      <div class="no-print bg-gradient-to-r from-emerald-800 to-teal-800 border border-amber-300/60 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-md">
+      <div class="no-print bg-[#141417] border border-[#2A8BEA]/60 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-md">
         <div>
           <h2 class="text-sm font-bold text-white">Funnel Designer — Payout Statement Generator</h2>
-          <p class="text-xs text-emerald-100">Auto-calculates Highest-Tier Monthly Base ($250 / $300 / $350), mid-month tier upgrade adjustments, and +$50 extra build bonuses.</p>
+          <p class="text-xs text-slate-400">Auto-calculates Highest-Tier Monthly Base ($250 / $300 / $350), mid-month tier upgrade adjustments, and +$50 extra build bonuses.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2.5">
-          <button onclick="copyStatementSummary('designer')" class="px-4 py-2 rounded-lg text-xs font-semibold bg-emerald-950/60 hover:bg-emerald-950 text-white border border-emerald-400/40 transition">
+          <button onclick="copyStatementSummary('designer')" class="px-4 py-2 rounded-lg text-xs font-semibold bg-[#0D0D0D] hover:bg-[#1E212B] text-[#48CAED] border border-[#48CAED]/40 transition">
             Copy Payout Summary
           </button>
-          <button onclick="printPayoutStatement('designer')" class="px-4 py-2 rounded-lg text-xs font-extrabold bg-amber-300 hover:bg-amber-200 text-emerald-950 transition shadow-md flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <button onclick="printPayoutStatement('designer')" class="px-4 py-2 rounded-lg text-xs font-extrabold bg-[#FF9D00] hover:bg-[#FFB033] text-[#0D0D0D] transition shadow-md flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-[#0D0D0D]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
             Print / Save PDF Payout Statement
           </button>
         </div>
       </div>
 
       <div id="designer-statement-sheet" class="statement-sheet bg-obsidian-900 border border-obsidian-800 rounded-2xl overflow-hidden shadow-2xl">
-        <div class="statement-gold-bar h-1.5 w-full bg-gold-500"></div>
+        <div class="statement-gold-bar h-2 w-full bg-gradient-to-r from-[#F73C5C] via-[#FF9D00] to-[#48CAED]"></div>
 
         <div class="p-6 sm:p-8 space-y-6">
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-obsidian-800 pb-6">
-            <div class="flex items-center gap-3.5">
-              <div class="w-11 h-11 rounded-xl bg-clover-50 border-2 border-clover-500 flex items-center justify-center shrink-0">
-                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="16" cy="16" r="13.5" stroke="#10B981" stroke-opacity="0.4" stroke-width="1.4"/>
-                  <rect x="4.5" y="13" width="2.2" height="6" rx="1.1" fill="#10B981"/>
-                  <rect x="25.3" y="13" width="2.2" height="6" rx="1.1" fill="#10B981"/>
-                  <path d="M16 5.5V26.5" stroke="#047857" stroke-width="2.4" stroke-linecap="round"/>
-                  <path d="M20.2 10.6C20.2 8.7 18.4 7.5 16 7.5C13.4 7.5 11.7 8.8 11.7 10.8C11.7 13 13.5 14 16.1 14.7C18.8 15.4 20.6 16.5 20.6 18.9C20.6 21.1 18.7 22.5 16 22.5C13.3 22.5 11.4 21.2 11.4 19.1" stroke="#064E3B" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div>
-                <div class="text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</div>
-                <div class="text-xs text-gray-400">Performance Funnel Architecture &amp; Client Growth Systems</div>
-                <div class="text-xs text-gold-400 font-semibold mt-0.5">Funnel Designer — Monthly Payout Statement</div>
-              </div>
+            <div>
+              <div class="text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</div>
+              <div class="text-xs text-gray-400">Performance Funnel Architecture &amp; Client Growth Systems</div>
+              <div class="text-xs text-gold-400 font-semibold mt-0.5">Funnel Designer — Monthly Payout Statement</div>
             </div>
 
             <div class="sm:text-right space-y-1">
@@ -1376,7 +1251,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="no-print border-t border-emerald-200 bg-white/80 py-4 px-4 sm:px-6 text-center text-xs font-medium text-emerald-900/70">
+  <footer class="no-print border-t border-[#262932] bg-[#0D0D0D] py-4 px-4 sm:px-6 text-center text-xs font-medium text-slate-400">
     Amplified Media Operations Suite • Local-First Encrypted Browser Storage • Zero External Server Dependency
   </footer>
 
@@ -1569,12 +1444,12 @@
       document.getElementById(`tab-${tabKey}`).classList.remove('hidden');
 
       document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('bg-white', 'text-emerald-950', 'shadow-sm', 'font-bold');
-        btn.classList.add('bg-emerald-950/50', 'text-emerald-100');
+        btn.classList.remove('bg-[#FF9D00]', 'text-[#0D0D0D]', 'shadow-sm', 'font-bold');
+        btn.classList.add('bg-[#1A1B20]', 'text-slate-300');
       });
       const activeBtn = document.getElementById(`nav-tab-${tabKey}`);
-      activeBtn.classList.remove('bg-emerald-950/50', 'text-emerald-100');
-      activeBtn.classList.add('bg-white', 'text-emerald-950', 'shadow-sm', 'font-bold');
+      activeBtn.classList.remove('bg-[#1A1B20]', 'text-slate-300');
+      activeBtn.classList.add('bg-[#FF9D00]', 'text-[#0D0D0D]', 'shadow-sm', 'font-bold');
 
       if (tabKey === 'simulator') updateSimulator();
       if (tabKey === 'ledger') renderLedger();
@@ -1927,11 +1802,11 @@
       appState.ledgerFilter = filterKey;
       document.querySelectorAll('.filter-pill').forEach(btn => {
         if (btn.dataset.filter === filterKey) {
-          btn.classList.remove('bg-clover-50', 'text-emerald-900');
-          btn.classList.add('bg-clover-600', 'text-white', 'font-bold');
+          btn.classList.remove('bg-[#0D0D0D]', 'text-slate-300');
+          btn.classList.add('bg-[#FF9D00]', 'text-[#0D0D0D]', 'font-bold');
         } else {
-          btn.classList.remove('bg-clover-600', 'text-white', 'font-bold');
-          btn.classList.add('bg-clover-50', 'text-emerald-900');
+          btn.classList.remove('bg-[#FF9D00]', 'text-[#0D0D0D]', 'font-bold');
+          btn.classList.add('bg-[#0D0D0D]', 'text-slate-300');
         }
       });
       renderLedger();
@@ -1986,41 +1861,41 @@
 
         let payBadge = '';
         if (deal.paymentStatus === 'cleared') {
-          payBadge = `<button onclick="toggleDealPaymentStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-clover-100 text-clover-700 border border-clover-500/30 hover:bg-clover-500 hover:text-white transition">100% Paid (Cleared)</button>`;
+          payBadge = `<button onclick="toggleDealPaymentStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#48CAED]/15 text-[#48CAED] border border-[#48CAED]/40 hover:bg-[#48CAED] hover:text-[#0D0D0D] transition">100% Paid (Cleared)</button>`;
         } else if (deal.paymentStatus === 'deposit') {
-          payBadge = `<button onclick="toggleDealPaymentStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300 hover:bg-amber-200 transition">50% Deposit Paid</button>`;
+          payBadge = `<button onclick="toggleDealPaymentStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#FF9D00]/15 text-[#FF9D00] border border-[#FF9D00]/40 hover:bg-[#FF9D00] hover:text-[#0D0D0D] transition">50% Deposit Paid</button>`;
         } else {
-          payBadge = `<button onclick="toggleDealPaymentStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-red-100 text-red-700 border border-red-300 hover:bg-red-200 transition">Unpaid</button>`;
+          payBadge = `<button onclick="toggleDealPaymentStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#F73C5C]/15 text-[#F73C5C] border border-[#F73C5C]/40 hover:bg-[#F73C5C] hover:text-white transition">Unpaid</button>`;
         }
 
         const buildBadge = deal.buildStatus === 'approved'
-          ? `<button onclick="toggleDealBuildStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-900 text-white hover:bg-emerald-800 transition">Approved &amp; Functional ✓</button>`
-          : `<button onclick="toggleDealBuildStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-gray-100 text-gray-600 border border-gray-300 hover:bg-gray-200 transition">In Progress</button>`;
+          ? `<button onclick="toggleDealBuildStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#2A8BEA] text-white hover:bg-[#48CAED] hover:text-[#0D0D0D] transition">Approved &amp; Functional ✓</button>`
+          : `<button onclick="toggleDealBuildStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[#0D0D0D] text-slate-400 border border-[#2E323E] hover:text-white transition">In Progress</button>`;
 
         const rankCell = enriched
-          ? `<span class="font-mono font-extrabold text-clover-700">${enriched.monthlyOrderLabel}</span>`
-          : `<span class="text-gray-400 italic">On Hold</span>`;
+          ? `<span class="font-mono font-extrabold text-[#FF9D00]">${enriched.monthlyOrderLabel}</span>`
+          : `<span class="text-slate-500 italic">On Hold</span>`;
 
         const rateCell = enriched
-          ? `<span class="font-mono font-bold ${enriched.commRate === 0.30 ? 'text-clover-600' : 'text-emerald-950'}">${(enriched.commRate * 100).toFixed(0)}%</span>`
-          : `<span class="text-gray-400">—</span>`;
+          ? `<span class="font-mono font-bold ${enriched.commRate === 0.30 ? 'text-[#48CAED]' : 'text-white'}">${(enriched.commRate * 100).toFixed(0)}%</span>`
+          : `<span class="text-slate-500">—</span>`;
 
         const tr = document.createElement('tr');
-        tr.className = 'hover:bg-clover-50/70 transition';
+        tr.className = 'hover:bg-[#1A1B20] transition';
         tr.innerHTML = `
           <td class="py-3 px-2">${rankCell}</td>
-          <td class="py-3 px-3 font-bold text-emerald-950">${deal.clientName}</td>
-          <td class="py-3 px-3 text-emerald-900/80">${tier.name}</td>
-          <td class="py-3 px-3 text-right font-mono font-bold text-emerald-950">${fmtUSD(tier.price)}</td>
+          <td class="py-3 px-3 font-bold text-white">${deal.clientName}</td>
+          <td class="py-3 px-3 text-slate-300">${tier.name}</td>
+          <td class="py-3 px-3 text-right font-mono font-bold text-white">${fmtUSD(tier.price)}</td>
           <td class="py-3 px-3 text-center">
-            <span class="font-mono font-semibold text-emerald-950">Day ${deal.clearedDay}</span>
-            <span class="block text-[10px] text-emerald-700/75">${getCycleLabelForDay(deal.clearedDay)}</span>
+            <span class="font-mono font-semibold text-white">Day ${deal.clearedDay}</span>
+            <span class="block text-[10px] text-[#48CAED]">${getCycleLabelForDay(deal.clearedDay)}</span>
           </td>
           <td class="py-3 px-3 text-center">${payBadge}</td>
           <td class="py-3 px-3 text-center">${buildBadge}</td>
           <td class="py-3 px-3 text-right">${rateCell}</td>
           <td class="py-3 px-2 text-right">
-            <button onclick="deleteDeal('${deal.id}')" class="text-gray-400 hover:text-red-600 p-1 transition" title="Delete Entry">✕</button>
+            <button onclick="deleteDeal('${deal.id}')" class="text-slate-500 hover:text-[#F73C5C] p-1 transition" title="Delete Entry">✕</button>
           </td>
         `;
         tbody.appendChild(tr);
