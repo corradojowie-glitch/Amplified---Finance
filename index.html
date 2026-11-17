@@ -89,49 +89,84 @@
       box-shadow: 0 0 0 2px rgba(72, 202, 237, 0.25);
     }
 
-    /* Statement Sheet Styling on Screen */
+    /* Official Payout Statement Sheet Styling: Crisp White Paper with #0D0D0D Black Text & Amplified Media Brand Accents */
     .statement-sheet {
-      background-color: #141417 !important;
-      color: #F8FAFC !important;
-      border: 1px solid #2E323E !important;
-      box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.85) !important;
+      background-color: #FFFFFF !important;
+      color: #0D0D0D !important;
+      border: 1.5px solid #CBD5E1 !important;
+      box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.85) !important;
     }
-    .statement-sheet .bg-obsidian-950,
+    .statement-sheet .bg-obsidian-950 {
+      background-color: #F8FAFC !important;
+      color: #0D0D0D !important;
+      border-color: #CBD5E1 !important;
+    }
     .statement-sheet .bg-obsidian-900 {
-      background-color: #0D0D0D !important;
-      color: #F8FAFC !important;
-      border-color: #262932 !important;
+      background-color: #FFFFFF !important;
+      color: #0D0D0D !important;
+      border-color: #CBD5E1 !important;
     }
     .statement-sheet .text-white {
-      color: #FFFFFF !important;
+      color: #0D0D0D !important;
     }
     .statement-sheet .text-gray-300,
     .statement-sheet .text-gray-200 {
-      color: #CBD5E1 !important;
+      color: #1E293B !important;
     }
     .statement-sheet .text-gray-400 {
-      color: #94A3B8 !important;
+      color: #334155 !important;
     }
-    .statement-sheet .text-gold-400 {
-      color: #FF9D00 !important;
+    .statement-sheet .text-gold-400,
+    .statement-sheet .text-gold-500 {
+      color: #D97706 !important;
+      font-weight: 700 !important;
     }
     .statement-sheet .text-emerald-400 {
-      color: #48CAED !important;
+      color: #2A8BEA !important;
+      font-weight: 700 !important;
+    }
+    .statement-sheet .text-red-300,
+    .statement-sheet .text-red-400 {
+      color: #F73C5C !important;
+      font-weight: 600 !important;
     }
     .statement-sheet .border-obsidian-800,
     .statement-sheet .border-obsidian-700 {
-      border-color: #262932 !important;
+      border-color: #CBD5E1 !important;
+    }
+    .statement-sheet .divide-obsidian-800 > :not([hidden]) ~ :not([hidden]) {
+      border-color: #E2E8F0 !important;
+    }
+    .statement-sheet th {
+      background-color: #F1F5F9 !important;
+      color: #0D0D0D !important;
+      border-bottom: 1.5px solid #94A3B8 !important;
+    }
+    .statement-sheet td {
+      color: #0D0D0D !important;
     }
     .statement-sheet input,
     .statement-sheet select {
-      background-color: #141417 !important;
-      color: #FFFFFF !important;
-      border-color: #2E323E !important;
+      background-color: #FFFFFF !important;
+      color: #0D0D0D !important;
+      border: 1px solid #94A3B8 !important;
+      font-weight: 600 !important;
+    }
+    .statement-sheet input:focus,
+    .statement-sheet select:focus {
+      border-color: #2A8BEA !important;
+      box-shadow: 0 0 0 2px rgba(42, 139, 234, 0.2) !important;
+      outline: none !important;
     }
     .statement-sheet .bg-amber-950\/30 {
-      background-color: rgba(247, 60, 92, 0.12) !important;
-      border-color: rgba(247, 60, 92, 0.45) !important;
-      color: #FECDD3 !important;
+      background-color: #FFF1F3 !important;
+      border-color: #F73C5C !important;
+      color: #0D0D0D !important;
+    }
+    .statement-sheet .border-gold-500\/40,
+    .statement-sheet .border-gold-500\/30 {
+      border-color: #FF9D00 !important;
+      border-width: 1.5px !important;
     }
 
     /* Map legacy light utility classes inside cards to the new dark palette */
@@ -235,8 +270,8 @@
       /* Transform Statement Sheet to crisp white-paper executive document */
       .statement-sheet {
         background: #ffffff !important;
-        color: #111827 !important;
-        border: 1px solid #D1D5DB !important;
+        color: #0D0D0D !important;
+        border: 1.5px solid #94A3B8 !important;
         box-shadow: none !important;
         border-radius: 6px !important;
         padding: 20px !important;
@@ -245,19 +280,24 @@
         max-width: 100% !important;
       }
 
-      /* Reset dark backgrounds inside the statement sheet */
+      /* Reset inner container backgrounds inside the statement sheet */
       .statement-sheet .bg-obsidian-950,
       .statement-sheet .bg-obsidian-900,
       .statement-sheet .bg-obsidian-850,
       .statement-sheet .bg-obsidian-800,
-      .statement-sheet .bg-amber-950\/30,
       .statement-sheet .bg-emerald-950\/30 {
-        background: #F9FAFB !important;
-        color: #111827 !important;
-        border-color: #D1D5DB !important;
+        background: #F8FAFC !important;
+        color: #0D0D0D !important;
+        border-color: #CBD5E1 !important;
       }
 
-      /* Force dark crisp text on white paper */
+      .statement-sheet .bg-amber-950\/30 {
+        background: #FFF1F3 !important;
+        color: #0D0D0D !important;
+        border-color: #F73C5C !important;
+      }
+
+      /* Force crisp #0D0D0D black text on white paper */
       .statement-sheet h1,
       .statement-sheet h2,
       .statement-sheet h3,
@@ -267,39 +307,46 @@
       .statement-sheet td,
       .statement-sheet th,
       .statement-sheet label,
-      .statement-sheet div {
-        color: #111827 !important;
+      .statement-sheet div,
+      .statement-sheet strong,
+      .statement-sheet em {
+        color: #0D0D0D !important;
       }
 
-      /* Keep gold accent bar and subtle gold highlights clean */
+      /* Retain Amplified Media brand accent colors on key highlights */
       .statement-gold-bar {
-        background: #FF9D00 !important;
-        background-color: #FF9D00 !important;
-        height: 4px !important;
+        background: linear-gradient(90deg, #FF9D00 0%, #F73C5C 50%, #2A8BEA 100%) !important;
+        height: 5px !important;
       }
 
       .statement-sheet .text-gold-400,
       .statement-sheet .text-gold-500 {
-        color: #B87100 !important;
+        color: #D97706 !important;
         font-weight: 700 !important;
       }
 
       .statement-sheet .text-emerald-400 {
-        color: #1D4ED8 !important;
+        color: #2A8BEA !important;
+        font-weight: 700 !important;
+      }
+
+      .statement-sheet .text-red-300,
+      .statement-sheet .text-red-400 {
+        color: #F73C5C !important;
         font-weight: 600 !important;
       }
 
-      /* Clean form inputs & selects so they render like crisp printed text */
+      /* Clean form inputs & selects so they render like crisp printed black text */
       .statement-sheet input,
       .statement-sheet select,
       .statement-sheet textarea {
         background: transparent !important;
         border: none !important;
-        border-bottom: 1px solid #D1D5DB !important;
+        border-bottom: 1px solid #94A3B8 !important;
         border-radius: 0 !important;
         padding: 2px 0 !important;
-        color: #111827 !important;
-        font-weight: 600 !important;
+        color: #0D0D0D !important;
+        font-weight: 700 !important;
         box-shadow: none !important;
         -webkit-appearance: none !important;
         appearance: none !important;
@@ -311,13 +358,14 @@
         border-collapse: collapse !important;
       }
       .statement-sheet th {
-        background-color: #F3F4F6 !important;
-        border-top: 1px solid #9CA3AF !important;
-        border-bottom: 1px solid #9CA3AF !important;
-        color: #111827 !important;
+        background-color: #F1F5F9 !important;
+        border-top: 1.5px solid #0D0D0D !important;
+        border-bottom: 1.5px solid #0D0D0D !important;
+        color: #0D0D0D !important;
       }
       .statement-sheet td {
-        border-bottom: 1px solid #E5E7EB !important;
+        border-bottom: 1px solid #CBD5E1 !important;
+        color: #0D0D0D !important;
       }
 
       /* Prevent awkward page breaks inside totals and signature blocks */
