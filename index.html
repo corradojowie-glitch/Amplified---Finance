@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amplified Media — Agency Operations, Client Payment Tracker & Contractor Payout Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: {
+              950: '#090A0F',
+              900: '#0F111A',
+              850: '#141724',
+              800: '#1A1E2E',
+              700: '#252B40',
+            },
+            gold: {
+              300: '#F3E5AB',
+              400: '#E5C453',
+              500: '#D4AF37',
+              600: '#B59024',
+              700: '#8C6D18',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Custom Scrollbar & Dark Obsidian Luxury Styling */
+    body {
+      background-color: #090A0F;
+      color: #F3F4F6;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090A0F;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #252B40;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D4AF37;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #1A1E2E;
+      height: 6px;
+      border-radius: 999px;
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #D4AF37;
+      cursor: pointer;
+      border: 2px solid #090A0F;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.45);
+    }
+
+    .gold-glow {
+      box-shadow: 0 0 24px rgba(212, 175, 55, 0.12);
+    }
+
+    /* ==========================================================================
+       CLEAN WHITE-PAPER PRINT-TO-PDF LAYOUT (@media print)
+       ========================================================================== */
+    @media print {
+      @page {
+        size: letter portrait;
+        margin: 0.5in;
+      }
+
+      html, body {
+        background: #ffffff !important;
+        color: #111827 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        font-size: 11pt !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Hide all UI chrome, navigation, simulator, ledger controls, buttons, and banners */
+      .no-print,
+      header,
+      nav,
+      #toast-container,
+      #modal-overlay,
+      #tab-simulator,
+      #tab-ledger {
+        display: none !important;
+      }
+
+      /* Hide inactive statement tab while printing the active statement tab */
+      .tab-panel.hidden {
+        display: none !important;
+      }
+
+      .tab-panel:not(.hidden) {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      main {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      /* Transform Statement Sheet to crisp white-paper executive document */
+      .statement-sheet {
+        background: #ffffff !important;
+        color: #111827 !important;
+        border: 1px solid #D1D5DB !important;
+        box-shadow: none !important;
+        border-radius: 6px !important;
+        padding: 20px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      /* Reset dark backgrounds inside the statement sheet */
+      .statement-sheet .bg-obsidian-950,
+      .statement-sheet .bg-obsidian-900,
+      .statement-sheet .bg-obsidian-850,
+      .statement-sheet .bg-obsidian-800,
+      .statement-sheet .bg-amber-950\/30,
+      .statement-sheet .bg-emerald-950\/30 {
+        background: #F9FAFB !important;
+        color: #111827 !important;
+        border-color: #D1D5DB !important;
+      }
+
+      /* Force dark crisp text on white paper */
+      .statement-sheet h1,
+      .statement-sheet h2,
+      .statement-sheet h3,
+      .statement-sheet h4,
+      .statement-sheet p,
+      .statement-sheet span,
+      .statement-sheet td,
+      .statement-sheet th,
+      .statement-sheet label,
+      .statement-sheet div {
+        color: #111827 !important;
+      }
+
+      /* Keep gold accent bar and subtle gold highlights clean */
+      .statement-gold-bar {
+        background-color: #D4AF37 !important;
+        height: 4px !important;
+      }
+
+      .statement-sheet .text-gold-400,
+      .statement-sheet .text-gold-500 {
+        color: #8C6D18 !important;
+        font-weight: 700 !important;
+      }
+
+      .statement-sheet .text-emerald-400 {
+        color: #065F46 !important;
+        font-weight: 600 !important;
+      }
+
+      /* Clean form inputs & selects so they render like crisp printed text */
+      .statement-sheet input,
+      .statement-sheet select,
+      .statement-sheet textarea {
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid #D1D5DB !important;
+        border-radius: 0 !important;
+        padding: 2px 0 !important;
+        color: #111827 !important;
+        font-weight: 600 !important;
+        box-shadow: none !important;
+        -webkit-appearance: none !important;
+        appearance: none !important;
+      }
+
+      /* Table borders for crisp PDF rendering */
+      .statement-sheet table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+      }
+      .statement-sheet th {
+        background-color: #F3F4F6 !important;
+        border-top: 1px solid #9CA3AF !important;
+        border-bottom: 1px solid #9CA3AF !important;
+        color: #111827 !important;
+      }
+      .statement-sheet td {
+        border-bottom: 1px solid #E5E7EB !important;
+      }
+
+      /* Prevent awkward page breaks inside totals and signature blocks */
+      .print-avoid-break {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-gold-500 selection:text-obsidian-950">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="no-print fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm"></div>
+
+  <!-- Custom Modal Overlay -->
+  <div id="modal-overlay" class="no-print fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-obsidian-900 border border-obsidian-700 rounded-xl max-w-md w-full p-6 shadow-2xl">
+      <h3 id="modal-title" class="text-lg font-bold text-white mb-2">Confirm Action</h3>
+      <p id="modal-message" class="text-sm text-gray-300 mb-6 leading-relaxed"></p>
+      <div class="flex justify-end gap-3">
+        <button id="modal-cancel" class="px-4 py-2 rounded-lg text-sm font-medium bg-obsidian-800 text-gray-300 hover:bg-obsidian-700 transition">Cancel</button>
+        <button id="modal-confirm" class="px-4 py-2 rounded-lg text-sm font-semibold bg-gold-500 text-obsidian-950 hover:bg-gold-400 transition">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Executive Header -->
+  <header class="no-print bg-obsidian-900/95 border-b border-obsidian-800 sticky top-0 z-40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <!-- Brand Identity with Custom Geometric Soundwave Logo -->
+      <div class="flex items-center gap-3.5">
+        <div class="w-11 h-11 rounded-xl bg-obsidian-950 border border-gold-500/40 flex items-center justify-center shadow-inner shrink-0">
+          <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Amplified Media Logo">
+            <rect x="3" y="13" width="3" height="6" rx="1.5" fill="#D4AF37" fill-opacity="0.65"/>
+            <rect x="8.5" y="8" width="3" height="16" rx="1.5" fill="#D4AF37" fill-opacity="0.85"/>
+            <rect x="14" y="3" width="4" height="26" rx="2" fill="#D4AF37"/>
+            <rect x="20.5" y="8" width="3" height="16" rx="1.5" fill="#D4AF37" fill-opacity="0.85"/>
+            <rect x="26" y="13" width="3" height="6" rx="1.5" fill="#D4AF37" fill-opacity="0.65"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-base sm:text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-gold-500/15 text-gold-400 border border-gold-500/30">Ops Suite</span>
+          </div>
+          <p class="text-xs text-gray-400">Agency Operations, Client Payment Tracker &amp; Contractor Payout Suite</p>
+        </div>
+      </div>
+
+      <!-- Global Controls: Exchange Rate, Active Billing Month, Backup & Rollover -->
+      <div class="flex flex-wrap items-center gap-2.5">
+        <div class="flex items-center gap-2 bg-obsidian-950 border border-obsidian-700 rounded-lg px-3 py-1.5">
+          <span class="text-xs text-gray-400 font-medium">USD → PHP:</span>
+          <span class="text-xs font-mono text-gold-400">₱</span>
+          <input id="global-fx-rate" type="number" step="0.01" min="1" value="63.67" class="w-16 bg-transparent text-xs font-mono font-bold text-white focus:outline-none focus:text-gold-400" title="Editable USD to PHP Exchange Rate" />
+        </div>
+
+        <div class="flex items-center gap-2 bg-obsidian-950 border border-obsidian-700 rounded-lg px-3 py-1.5">
+          <span class="text-xs text-gray-400 font-medium">Month:</span>
+          <input id="global-billing-month" type="text" value="November 2026" class="w-32 bg-transparent text-xs font-semibold text-white focus:outline-none focus:text-gold-400" />
+        </div>
+
+        <button onclick="exportBackupJSON()" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-obsidian-800 hover:bg-obsidian-700 text-gray-200 border border-obsidian-700 transition flex items-center gap-1.5" title="Download JSON Backup">
+          <svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Export
+        </button>
+
+        <label class="px-3 py-1.5 rounded-lg text-xs font-medium bg-obsidian-800 hover:bg-obsidian-700 text-gray-200 border border-obsidian-700 transition cursor-pointer flex items-center gap-1.5" title="Restore from JSON Backup">
+          <svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+          Import
+          <input id="import-json-input" type="file" accept=".json" class="hidden" onchange="importBackupJSON(event)" />
+        </label>
+
+        <button onclick="promptNewBillingMonth()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-gold-500/15 hover:bg-gold-500/25 text-gold-400 border border-gold-500/40 transition">
+          Start New Billing Month
+        </button>
+      </div>
+    </div>
+
+    <!-- 5-Tab Navigation Bar -->
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 flex overflow-x-auto gap-1.5 pb-2.5 pt-1">
+      <button id="nav-tab-simulator" onclick="switchTab('simulator')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-gold-500 text-obsidian-950">
+        <span>1. Margin &amp; Cash-Flow Simulator</span>
+      </button>
+      <button id="nav-tab-ledger" onclick="switchTab('ledger')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-obsidian-800 text-gray-300 hover:bg-obsidian-700">
+        <span>2. Master Client Payment &amp; Settlement Ledger</span>
+      </button>
+      <button id="nav-tab-founder" onclick="switchTab('founder')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-obsidian-800 text-gray-300 hover:bg-obsidian-700">
+        <span>3. Founder Payout Statement</span>
+      </button>
+      <button id="nav-tab-csm" onclick="switchTab('csm')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-obsidian-800 text-gray-300 hover:bg-obsidian-700">
+        <span>4. CSM Payout Statement</span>
+      </button>
+      <button id="nav-tab-designer" onclick="switchTab('designer')" class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition whitespace-nowrap flex items-center gap-2 bg-obsidian-800 text-gray-300 hover:bg-obsidian-700">
+        <span>5. Funnel Designer Payout Statement</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
+
+    <!-- ========================================================================
+         TAB 1: MARGIN & CASH-FLOW SIMULATOR
+         ======================================================================== -->
+    <section id="tab-simulator" class="tab-panel space-y-6">
+      <div class="bg-obsidian-900 border border-obsidian-800 rounded-2xl p-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div>
+          <h1 class="text-xl font-bold text-white">Agency Margin &amp; Cash-Flow Simulator</h1>
+          <p class="text-xs text-gray-400 mt-0.5">Model monthly deal volume, Client Success Manager (CSM) accelerators, Highest-Tier Funnel Designer base + build bonuses, and self-promo ad spend.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="applySimPreset('launch')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-obsidian-800 hover:bg-obsidian-700 text-gold-300 border border-obsidian-700 transition">Month 1 Launch (1x T1)</button>
+          <button onclick="applySimPreset('steady')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-obsidian-800 hover:bg-obsidian-700 text-gold-300 border border-obsidian-700 transition">Steady Growth (T1+T2+1M)</button>
+          <button onclick="applySimPreset('scale')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-obsidian-800 hover:bg-obsidian-700 text-gold-300 border border-obsidian-700 transition">High Scale (T1+T2+T3+2M)</button>
+          <button onclick="applySimPreset('zero')" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-obsidian-800 hover:bg-obsidian-700 text-gray-300 border border-obsidian-700 transition">Zero Sales Stress Test</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-5 space-y-5">
+          <div class="bg-obsidian-900 border border-obsidian-800 rounded-2xl p-5 space-y-4">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-gold-400">Monthly Cleared Deal Volume</h2>
+
+            <div class="flex items-center justify-between bg-obsidian-950 p-3.5 rounded-xl border border-obsidian-800">
+              <div>
+                <div class="text-sm font-semibold text-white">Tier 1 — Starter Funnel</div>
+                <div class="text-xs text-gray-400 font-mono">$1,250 USD • Designer Base $250</div>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <button onclick="adjustSimCount('t1', -1)" class="w-8 h-8 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold">-</button>
+                <span id="sim-t1-val" class="w-7 text-center font-mono font-bold text-gold-400">1</span>
+                <button onclick="adjustSimCount('t1', 1)" class="w-8 h-8 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold">+</button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between bg-obsidian-950 p-3.5 rounded-xl border border-obsidian-800">
+              <div>
+                <div class="text-sm font-semibold text-white">Tier 2 — Growth System</div>
+                <div class="text-xs text-gray-400 font-mono">$1,750 USD • Designer Base $300</div>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <button onclick="adjustSimCount('t2', -1)" class="w-8 h-8 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold">-</button>
+                <span id="sim-t2-val" class="w-7 text-center font-mono font-bold text-gold-400">1</span>
+                <button onclick="adjustSimCount('t2', 1)" class="w-8 h-8 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold">+</button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between bg-obsidian-950 p-3.5 rounded-xl border border-obsidian-800">
+              <div>
+                <div class="text-sm font-semibold text-white">Tier 3 — Full Scale Architecture</div>
+                <div class="text-xs text-gray-400 font-mono">$2,250 USD • Designer Base $350</div>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <button onclick="adjustSimCount('t3', -1)" class="w-8 h-8 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold">-</button>
+                <span id="sim-t3-val" class="w-7 text-center font-mono font-bold text-gold-400">0</span>
+                <button onclick="adjustSimCount('t3', 1)" class="w-8 h-8 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold">+</button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between bg-obsidian-950 p-3.5 rounded-xl border border-obsidian-800">
+              <div>
+                <div class="text-sm font-semibold text-white">Monthly Maintenance Retainer</div>
+                <div class="text-xs text-gray-400 font-mono">$300/mo • 25% CSM • Covered in Designer Base</div>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <button onclick="adjustSimCount('maint', -1)" class="w-8 h-8 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold">-</button>
+                <span id="sim-maint-val" class="w-7 text-center font-mono font-bold text-gold-400">1</span>
+                <button onclick="adjustSimCount('maint', 1)" class="w-8 h-8 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold">+</button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between bg-obsidian-950 p-3.5 rounded-xl border border-obsidian-800">
+              <div>
+                <div class="text-sm font-semibold text-white">Paid Ads Management (Optional Add-On)</div>
+                <div class="text-xs text-gray-400 font-mono">$500/mo • 25% CSM • Founder Fulfilled</div>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <button onclick="adjustSimCount('adsMgmt', -1)" class="w-8 h-8 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold">-</button>
+                <span id="sim-adsMgmt-val" class="w-7 text-center font-mono font-bold text-gold-400">0</span>
+                <button onclick="adjustSimCount('adsMgmt', 1)" class="w-8 h-8 rounded-lg bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-obsidian-900 border border-obsidian-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-bold uppercase tracking-wider text-gold-400">Agency Self-Promo Ad Spend</h2>
+              <span id="sim-adspend-display" class="font-mono text-base font-bold text-white">$500</span>
+            </div>
+            <input id="sim-adspend-slider" type="range" min="0" max="5000" step="50" value="500" class="w-full" oninput="updateSimulator()" />
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <div class="bg-obsidian-950 p-3 rounded-xl border border-obsidian-800">
+                <div class="text-[11px] text-gray-400">Effective CAC (New Builds)</div>
+                <div id="sim-cac-val" class="font-mono text-sm font-bold text-white mt-0.5">$250.00</div>
+              </div>
+              <div class="bg-obsidian-950 p-3 rounded-xl border border-obsidian-800">
+                <div class="text-[11px] text-gray-400">Gross Revenue ROAS</div>
+                <div id="sim-roas-val" class="font-mono text-sm font-bold text-emerald-400 mt-0.5">6.60x</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-obsidian-900 border border-obsidian-800 rounded-2xl p-5">
+              <div class="text-xs font-semibold uppercase tracking-wider text-gray-400">Gross Cleared Revenue</div>
+              <div id="sim-gross-usd" class="text-2xl font-extrabold font-mono text-white mt-1">$3,300.00</div>
+              <div id="sim-gross-php" class="text-xs font-mono text-gold-400 mt-0.5">₱210,111.00 PHP</div>
+            </div>
+
+            <div class="bg-obsidian-900 border border-gold-500/40 rounded-2xl p-5 gold-glow">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-wider text-gold-400">Founder Net Take-Home</span>
+                <span id="sim-margin-pct" class="text-xs font-mono px-2 py-0.5 rounded bg-gold-500/15 text-gold-300">43.0%</span>
+              </div>
+              <div id="sim-founder-usd" class="text-2xl font-extrabold font-mono text-white mt-1">$1,420.00</div>
+              <div id="sim-founder-php" class="text-xs font-mono text-gold-400 mt-0.5">₱90,411.40 PHP (After Ad Spend)</div>
+            </div>
+
+            <div class="bg-obsidian-900 border border-obsidian-800 rounded-2xl p-5">
+              <div class="text-xs font-semibold uppercase tracking-wider text-gray-400">Client Success Manager (CSM)</div>
+              <div id="sim-csm-usd" class="text-2xl font-extrabold font-mono text-white mt-1">$825.00</div>
+              <div id="sim-csm-php" class="text-xs font-mono text-gray-400 mt-0.5">₱52,527.75 PHP</div>
+            </div>
+
+            <div class="bg-obsidian-900 border border-obsidian-800 rounded-2xl p-5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-wider text-gray-400">Funnel Designer Total</span>
+                <span id="sim-designer-badge" class="text-[11px] font-mono text-gold-400">Base $300 + $50</span>
+              </div>
+              <div id="sim-designer-usd" class="text-2xl font-extrabold font-mono text-white mt-1">$350.00</div>
+              <div id="sim-designer-php" class="text-xs font-mono text-gray-400 mt-0.5">₱22,284.50 PHP</div>
+            </div>
+          </div>
+
+          <div class="bg-obsidian-900 border border-obsidian-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between border-b border-obsidian-800 pb-3">
+              <h3 class="text-sm font-bold uppercase tracking-wider text-white">Deal-by-Deal Waterfall &amp; Locked Allocation Rules</h3>
+              <span class="text-xs font-mono text-gray-400">10% Overhead: <strong id="sim-overhead-usd" class="text-white">$330.00</strong></span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="text-[11px] uppercase tracking-wider text-gray-400 border-b border-obsidian-800">
+                    <th class="py-2 pr-3">Deal #</th>
+                    <th class="py-2 px-3">Package</th>
+                    <th class="py-2 px-3 text-right">Settlement</th>
+                    <th class="py-2 px-3 text-right">CSM Rate</th>
+                    <th class="py-2 pl-3 text-right">CSM Payout</th>
+                  </tr>
+                </thead>
+                <tbody id="sim-waterfall-body" class="divide-y divide-obsidian-800/70 text-xs">
+                </tbody>
+              </table>
+            </div>
+
+            <div class="bg-obsidian-950 border border-obsidian-800 rounded-xl p-3.5 text-xs text-gray-300 space-y-1.5 leading-relaxed">
+              <div><strong class="text-gold-400">• Client Success Manager (CSM):</strong> 25% on Deals #1 &amp; #2 per calendar month; accelerates to 30% on Deal #3 and every subsequent deal in that month + 25% on Monthly Maintenance / Paid Ads retainers.</div>
+              <div><strong class="text-gold-400">• Funnel Designer Highest-Tier Base + Bonus:</strong> Monthly base automatically scales to $250 (Tier 1), $300 (Tier 2), or $350 (Tier 3), or $0 if 0 cleared builds exist, PLUS $50 bonus for each additional cleared &amp; approved new funnel build beyond the 1st build. Maintenance updates are covered under the monthly base.</div>
+              <div><strong class="text-gold-400">• Agency Overhead &amp; Buffer:</strong> 10% of gross cleared revenue retained for software, Stripe/Wise fees, and reserve buffer.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         TAB 2: MASTER CLIENT PAYMENT & SETTLEMENT LEDGER
+         ======================================================================== -->
+    <section id="tab-ledger" class="tab-panel hidden space-y-6">
+      <div class="bg-obsidian-900 border border-gold-500/40 rounded-2xl p-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 gold-glow">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-gold-500 animate-pulse"></span>
+            <h1 class="text-lg sm:text-xl font-bold text-white">Master Client Payment &amp; Settlement Ledger</h1>
+          </div>
+          <p class="text-xs text-gray-400 mt-1">Single source of truth. Strict <strong>100% Paid (Cleared)</strong> Pay-When-Paid enforcement across all Contractor Payout Statements.</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-obsidian-950 border border-obsidian-700 p-2.5 rounded-xl">
+          <label for="global-cutoff-selector" class="text-xs font-semibold text-gold-400 whitespace-nowrap px-1">Active Payout Window:</label>
+          <select id="global-cutoff-selector" onchange="syncCutoffWindow(this.value)" class="bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white focus:outline-none focus:border-gold-500">
+            <option value="cycle1">Cycle 1: 1st–12th Cut-Off → Paid 15th</option>
+            <option value="cycle2">Cycle 2: 13th–27th Cut-Off → Paid 30th</option>
+            <option value="full">Full Month Consolidated (1st–31st)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3.5">
+        <div class="bg-obsidian-900 border border-obsidian-800 rounded-xl p-4">
+          <div class="text-[11px] font-semibold uppercase text-gray-400">Total Cleared Rev</div>
+          <div id="kpi-cleared-rev" class="text-lg font-extrabold font-mono text-white mt-1">$0.00</div>
+          <div id="kpi-cleared-rev-php" class="text-[11px] font-mono text-gold-400">₱0.00</div>
+        </div>
+        <div class="bg-obsidian-900 border border-obsidian-800 rounded-xl p-4">
+          <div class="text-[11px] font-semibold uppercase text-amber-400">50% Deposits Held</div>
+          <div id="kpi-held-deposits" class="text-lg font-extrabold font-mono text-amber-300 mt-1">$0.00</div>
+          <div class="text-[11px] text-gray-400">Excluded until 100%</div>
+        </div>
+        <div class="bg-obsidian-900 border border-obsidian-800 rounded-xl p-4">
+          <div class="text-[11px] font-semibold uppercase text-gray-400">Full-Mo Designer Tier</div>
+          <div id="kpi-highest-tier" class="text-lg font-extrabold font-mono text-gold-400 mt-1">$0 Base</div>
+          <div id="kpi-highest-tier-label" class="text-[11px] text-gray-400">No cleared builds</div>
+        </div>
+        <div class="bg-obsidian-900 border border-obsidian-800 rounded-xl p-4">
+          <div class="text-[11px] font-semibold uppercase text-gray-400">CSM Earned (Window)</div>
+          <div id="kpi-csm-earned" class="text-lg font-extrabold font-mono text-white mt-1">$0.00</div>
+          <div id="kpi-csm-earned-php" class="text-[11px] font-mono text-gray-400">₱0.00</div>
+        </div>
+        <div class="bg-obsidian-900 border border-obsidian-800 rounded-xl p-4">
+          <div class="text-[11px] font-semibold uppercase text-gray-400">Designer (Window)</div>
+          <div id="kpi-designer-earned" class="text-lg font-extrabold font-mono text-white mt-1">$0.00</div>
+          <div id="kpi-designer-earned-php" class="text-[11px] font-mono text-gray-400">₱0.00</div>
+        </div>
+        <div class="bg-obsidian-900 border border-gold-500/30 rounded-xl p-4">
+          <div class="text-[11px] font-semibold uppercase text-gold-400">Founder Net (Month)</div>
+          <div id="kpi-founder-net" class="text-lg font-extrabold font-mono text-emerald-400 mt-1">$0.00</div>
+          <div id="kpi-founder-net-php" class="text-[11px] font-mono text-gold-400">₱0.00</div>
+        </div>
+      </div>
+
+      <div class="bg-obsidian-900 border border-obsidian-800 rounded-2xl p-5">
+        <h2 class="text-sm font-bold uppercase tracking-wider text-gold-400 mb-3.5">Add Client Deal / Retainer Entry</h2>
+        <form id="add-deal-form" onsubmit="handleAddDeal(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+          <div class="lg:col-span-2">
+            <label class="block text-[11px] text-gray-400 mb-1">Client / Business Name</label>
+            <input id="deal-client-name" type="text" required placeholder="e.g., Apex Dental Clinic" class="w-full bg-obsidian-950 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500" />
+          </div>
+          <div>
+            <label class="block text-[11px] text-gray-400 mb-1">Package Tier</label>
+            <select id="deal-tier" class="w-full bg-obsidian-950 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500">
+              <option value="T1">Tier 1 — Starter ($1,250)</option>
+              <option value="T2">Tier 2 — Growth ($1,750)</option>
+              <option value="T3">Tier 3 — Full Scale ($2,250)</option>
+              <option value="MAINT">Monthly Maintenance ($300)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] text-gray-400 mb-1">Payment Status</label>
+            <select id="deal-payment-status" class="w-full bg-obsidian-950 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500">
+              <option value="cleared">100% Paid (Cleared)</option>
+              <option value="deposit">50% Deposit Paid</option>
+              <option value="unpaid">Unpaid</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] text-gray-400 mb-1">Cleared Day (1–31)</label>
+            <input id="deal-cleared-day" type="number" min="1" max="31" value="10" required class="w-full bg-obsidian-950 border border-obsidian-700 rounded-lg px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-gold-500" />
+          </div>
+          <div>
+            <label class="block text-[11px] text-gray-400 mb-1">Designer Build Status</label>
+            <select id="deal-build-status" class="w-full bg-obsidian-950 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500">
+              <option value="approved">Approved &amp; Functional ✓</option>
+              <option value="in_progress">In Progress</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2 lg:col-span-6 flex justify-end pt-1">
+            <button type="submit" class="px-5 py-2 rounded-lg text-xs font-bold bg-gold-500 hover:bg-gold-400 text-obsidian-950 transition shadow-lg">
+              + Record Client Entry
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="bg-obsidian-900 border border-obsidian-800 rounded-2xl p-5 space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div class="flex flex-wrap gap-1.5" id="ledger-filter-pills">
+            <button onclick="setLedgerFilter('all')" data-filter="all" class="filter-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-gold-500 text-obsidian-950">All Deals</button>
+            <button onclick="setLedgerFilter('cleared')" data-filter="cleared" class="filter-pill px-3 py-1.5 rounded-full text-xs font-medium bg-obsidian-800 text-gray-300 hover:bg-obsidian-700">100% Paid (Cleared)</button>
+            <button onclick="setLedgerFilter('deposit')" data-filter="deposit" class="filter-pill px-3 py-1.5 rounded-full text-xs font-medium bg-obsidian-800 text-gray-300 hover:bg-obsidian-700">50% Deposit Held</button>
+            <button onclick="setLedgerFilter('cycle1')" data-filter="cycle1" class="filter-pill px-3 py-1.5 rounded-full text-xs font-medium bg-obsidian-800 text-gray-300 hover:bg-obsidian-700">Cycle 1: 1st–12th → Paid 15th</button>
+            <button onclick="setLedgerFilter('cycle2')" data-filter="cycle2" class="filter-pill px-3 py-1.5 rounded-full text-xs font-medium bg-obsidian-800 text-gray-300 hover:bg-obsidian-700">Cycle 2: 13th–27th → Paid 30th</button>
+            <button onclick="setLedgerFilter('rollover')" data-filter="rollover" class="filter-pill px-3 py-1.5 rounded-full text-xs font-medium bg-obsidian-800 text-gray-300 hover:bg-obsidian-700">28th+ Rollover</button>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-400">Sort by:</span>
+            <select id="ledger-sort-select" onchange="renderLedger()" class="bg-obsidian-950 border border-obsidian-700 rounded-lg px-2.5 py-1 text-xs text-gray-200 focus:outline-none">
+              <option value="day_asc">Cleared Day (1 → 31)</option>
+              <option value="amount_desc">Settlement Amount (High → Low)</option>
+              <option value="status">Payment Status</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="text-[11px] uppercase tracking-wider text-gray-400 border-b border-obsidian-800">
+                <th class="py-3 px-2">Rank</th>
+                <th class="py-3 px-3">Client Name</th>
+                <th class="py-3 px-3">Package Tier</th>
+                <th class="py-3 px-3 text-right">Settlement</th>
+                <th class="py-3 px-3 text-center">Day &amp; Cycle</th>
+                <th class="py-3 px-3 text-center">Payment Status (Click Toggle)</th>
+                <th class="py-3 px-3 text-center">Designer Build (Click Toggle)</th>
+                <th class="py-3 px-3 text-right">CSM Rate</th>
+                <th class="py-3 px-2 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-table-body" class="divide-y divide-obsidian-800/70 text-xs">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         TAB 3: FOUNDER PAYOUT STATEMENT (PRINT-READY PDF)
+         ======================================================================== -->
+    <section id="tab-founder" class="tab-panel hidden space-y-5">
+      <div class="no-print bg-obsidian-900 border border-obsidian-800 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <h2 class="text-sm font-bold text-white">Founder — Executive Payout &amp; Net Take-Home Statement</h2>
+          <p class="text-xs text-gray-400">Auto-reconciles cleared revenue in the active cut-off window minus contractor payouts, 10% agency overhead buffer, and self-promo ad spend.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2.5">
+          <button onclick="copyStatementSummary('founder')" class="px-4 py-2 rounded-lg text-xs font-semibold bg-obsidian-800 hover:bg-obsidian-700 text-gold-300 border border-obsidian-700 transition">
+            Copy Payout Summary
+          </button>
+          <button onclick="printPayoutStatement('founder')" class="px-4 py-2 rounded-lg text-xs font-bold bg-gold-500 hover:bg-gold-400 text-obsidian-950 transition shadow-lg flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            Print / Save PDF Payout Statement
+          </button>
+        </div>
+      </div>
+
+      <div id="founder-statement-sheet" class="statement-sheet bg-obsidian-900 border border-obsidian-800 rounded-2xl overflow-hidden shadow-2xl">
+        <div class="statement-gold-bar h-1.5 w-full bg-gold-500"></div>
+
+        <div class="p-6 sm:p-8 space-y-6">
+          <!-- Header -->
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-obsidian-800 pb-6">
+            <div class="flex items-center gap-3.5">
+              <div class="w-11 h-11 rounded-xl bg-obsidian-950 border border-gold-500/40 flex items-center justify-center shrink-0">
+                <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="13" width="3" height="6" rx="1.5" fill="#D4AF37" fill-opacity="0.65"/>
+                  <rect x="8.5" y="8" width="3" height="16" rx="1.5" fill="#D4AF37" fill-opacity="0.85"/>
+                  <rect x="14" y="3" width="4" height="26" rx="2" fill="#D4AF37"/>
+                  <rect x="20.5" y="8" width="3" height="16" rx="1.5" fill="#D4AF37" fill-opacity="0.85"/>
+                  <rect x="26" y="13" width="3" height="6" rx="1.5" fill="#D4AF37" fill-opacity="0.65"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</div>
+                <div class="text-xs text-gray-400">Performance Funnel Architecture &amp; Client Growth Systems</div>
+                <div class="text-xs text-gold-400 font-semibold mt-0.5">Founder — Executive Net Distribution &amp; Payout Statement</div>
+              </div>
+            </div>
+
+            <div class="sm:text-right space-y-1">
+              <div class="text-[11px] uppercase tracking-wider text-gray-400">Official Principal Distribution Statement</div>
+              <div class="flex sm:justify-end items-center gap-1.5">
+                <span class="text-xs text-gray-400">Statement #:</span>
+                <input id="fnd-statement-id" type="text" value="AM-FND-2026-11A" oninput="saveStatementMeta()" class="bg-obsidian-950 border border-obsidian-700 rounded px-2 py-0.5 text-xs font-mono font-bold text-gold-400 sm:text-right w-40" />
+              </div>
+              <div class="text-xs text-gray-400">FX Reference: <span class="font-mono font-semibold text-white">1 USD = ₱<span class="fx-display-val">63.67</span> PHP</span></div>
+            </div>
+          </div>
+
+          <!-- Metadata Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 bg-obsidian-950 border border-obsidian-800 rounded-xl p-4">
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Founder / Executive Name</label>
+              <input id="fnd-contractor-name" type="text" value="Mark Jowie A. Corrado" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Billing Month</label>
+              <input id="fnd-billing-month" type="text" value="November 2026" oninput="syncBillingMonthFromStatement(this.value)" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Payout Cut-Off Cycle</label>
+              <select id="fnd-cutoff-select" onchange="syncCutoffWindow(this.value)" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white">
+                <option value="cycle1">Cycle 1: 1st–12th Cut-Off → Paid 15th</option>
+                <option value="cycle2">Cycle 2: 13th–27th Cut-Off → Paid 30th</option>
+                <option value="full">Full Month Consolidated (1st–31st)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Scheduled Pay Date</label>
+              <input id="fnd-pay-date" type="text" value="November 15, 2026" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Payment Method &amp; Account Details</label>
+              <div class="flex gap-1.5">
+                <select id="fnd-pay-method" onchange="saveStatementMeta()" class="bg-obsidian-900 border border-obsidian-700 rounded-lg px-2 py-1.5 text-xs font-semibold text-white">
+                  <option value="BPI" selected>BPI</option>
+                  <option value="Wise">Wise</option>
+                  <option value="GCash">GCash</option>
+                  <option value="MariBank">MariBank</option>
+                  <option value="PayPal">PayPal</option>
+                </select>
+                <input id="fnd-pay-account" type="text" value="jowie.corrado@bpi.com.ph • BPI Savings" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-2.5 py-1.5 text-xs text-white" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Entity / Tax Classification</label>
+              <input id="fnd-entity-class" type="text" value="Amplified Media — Sole Proprietorship / Owner Draw" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+          </div>
+
+          <!-- Waterfall Reconciliation & Expense Deductions Panel -->
+          <div class="bg-obsidian-950 border border-obsidian-800 rounded-xl p-4 space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-obsidian-800 pb-2.5">
+              <div class="text-[11px] font-bold uppercase tracking-wider text-gold-400">Active Payout Window Waterfall Reconciliation</div>
+              <span id="fnd-window-label" class="text-xs font-mono text-gray-400">Cycle 1: 1st–12th Cut-Off</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
+              <div class="bg-obsidian-900 border border-obsidian-800 rounded-lg p-3">
+                <div class="text-[11px] text-gray-400">1. Gross Cleared Rev</div>
+                <div id="fnd-wf-gross" class="font-mono font-bold text-white text-sm mt-0.5">$0.00</div>
+              </div>
+              <div class="bg-obsidian-900 border border-obsidian-800 rounded-lg p-3">
+                <div class="text-[11px] text-gray-400">2. Less: CSM Payout</div>
+                <div id="fnd-wf-csm" class="font-mono font-semibold text-red-300 text-sm mt-0.5">-$0.00</div>
+              </div>
+              <div class="bg-obsidian-900 border border-obsidian-800 rounded-lg p-3">
+                <div class="text-[11px] text-gray-400">3. Less: Designer Payout</div>
+                <div id="fnd-wf-designer" class="font-mono font-semibold text-red-300 text-sm mt-0.5">-$0.00</div>
+              </div>
+              <div class="bg-obsidian-900 border border-obsidian-800 rounded-lg p-3">
+                <div class="text-[11px] text-gray-400">4. Less: 10% Overhead</div>
+                <div id="fnd-wf-overhead" class="font-mono font-semibold text-red-300 text-sm mt-0.5">-$0.00</div>
+              </div>
+              <div class="bg-obsidian-900 border border-gold-500/30 rounded-lg p-3">
+                <div class="text-[11px] text-gold-400 font-semibold">5. Gross Operating Net</div>
+                <div id="fnd-wf-operating" class="font-mono font-extrabold text-emerald-400 text-sm mt-0.5">$0.00</div>
+              </div>
+            </div>
+
+            <!-- Editable Founder Expense & Ad Spend Deduction Inputs -->
+            <div class="pt-2 border-t border-obsidian-800/80 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="text-[11px] text-gray-400">Self-Promo Ad Spend (USD)</label>
+                  <button type="button" onclick="syncFounderAdSpendFromSimulator()" class="no-print text-[10px] font-semibold text-gold-400 hover:text-gold-300 underline">Sync from Simulator</button>
+                </div>
+                <input id="fnd-adspend-usd" type="number" step="1" min="0" value="250" oninput="renderStatements()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-mono font-bold text-white" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Other Direct / Reimbursable Expense (USD)</label>
+                <input id="fnd-other-expense-usd" type="number" step="1" min="0" value="0" oninput="renderStatements()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-mono font-bold text-white" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Custom Bonus / Owner Adjustment (USD)</label>
+                <input id="fnd-adjustment-usd" type="number" step="1" value="0" oninput="renderStatements()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-mono font-bold text-white" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Itemized Cleared Deals & Net Founder Margin Table -->
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-300 mb-2.5">Itemized Cleared Deals &amp; Net Founder Margin Contribution (Active Payout Window)</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="text-[11px] uppercase tracking-wider text-gray-400 border-b border-obsidian-700">
+                    <th class="py-2.5 px-2">Deal Order</th>
+                    <th class="py-2.5 px-3">Client Name</th>
+                    <th class="py-2.5 px-3">Package Tier</th>
+                    <th class="py-2.5 px-3 text-center">Cleared Day</th>
+                    <th class="py-2.5 px-3 text-right">Gross Settlement</th>
+                    <th class="py-2.5 px-3 text-right">CSM Cut</th>
+                    <th class="py-2.5 px-3 text-right">10% Overhead</th>
+                    <th class="py-2.5 px-2 text-right">Contribution (Pre-Designer/Ads)</th>
+                  </tr>
+                </thead>
+                <tbody id="fnd-statement-tbody" class="divide-y divide-obsidian-800 text-xs">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Executive Net Distribution Totals Box -->
+          <div class="print-avoid-break grid grid-cols-1 md:grid-cols-12 gap-4 items-end pt-2">
+            <div class="md:col-span-6 bg-obsidian-950 border border-obsidian-800 rounded-xl p-4 space-y-2">
+              <div class="text-xs font-bold text-white">Principal Distribution &amp; Reserve Buffer Governance</div>
+              <p class="text-[11px] text-gray-400 leading-relaxed">
+                Net Founder Distribution is calculated strictly from 100% cleared client funds within the selected cut-off window after fully funding Contractor Obligations (CSM &amp; Funnel Designer), retaining the mandatory 10% Agency Overhead &amp; Reserve Buffer, and deducting verified self-promo ad spend and direct operating expenses.
+              </p>
+            </div>
+
+            <div class="md:col-span-6 bg-obsidian-950 border border-gold-500/40 rounded-xl p-4 space-y-2">
+              <div class="flex justify-between text-xs">
+                <span class="text-gray-400">Gross Cleared Revenue (Window):</span>
+                <span id="fnd-sum-gross-usd" class="font-mono font-semibold text-white">$0.00</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-gray-400">Total Contractor &amp; 10% Overhead Deductions:</span>
+                <span id="fnd-sum-deductions-usd" class="font-mono font-semibold text-red-300">-$0.00</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-gray-400">Self-Promo Ad Spend &amp; Direct Expenses:</span>
+                <span id="fnd-sum-expenses-usd" class="font-mono font-semibold text-red-300">-$0.00</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-gray-400">Custom Owner Adjustment (USD):</span>
+                <span id="fnd-sum-adj-usd" class="font-mono font-semibold text-white">$0.00</span>
+              </div>
+              <div class="border-t border-obsidian-800 pt-2.5 flex justify-between items-baseline">
+                <span class="text-xs font-bold uppercase text-gold-400">Total Net Founder Payout / Owner Draw (USD):</span>
+                <span id="fnd-total-usd" class="text-lg font-extrabold font-mono text-emerald-400">$0.00</span>
+              </div>
+              <div class="flex justify-between items-baseline">
+                <span class="text-xs font-semibold text-gray-400">Equivalent PHP Remittance:</span>
+                <span id="fnd-total-php" class="text-sm font-bold font-mono text-gold-400">₱0.00 PHP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Authorized Signatory Block -->
+          <div class="print-avoid-break pt-6 border-t border-obsidian-800 text-xs max-w-md">
+            <div class="border-b border-gray-600 h-8 mb-1.5"></div>
+            <div id="fnd-sig-name" class="font-semibold text-white">Mark Jowie A. Corrado</div>
+            <div class="text-gray-400">Founder &amp; Managing Principal — Amplified Media (Authorized Signatory)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         TAB 4: CSM PAYOUT STATEMENT (PRINT-READY PDF)
+         ======================================================================== -->
+    <section id="tab-csm" class="tab-panel hidden space-y-5">
+      <div class="no-print bg-obsidian-900 border border-obsidian-800 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <h2 class="text-sm font-bold text-white">Client Success Manager (CSM) — Payout Statement Generator</h2>
+          <p class="text-xs text-gray-400">Auto-populated from 100% Cleared deals in the selected cut-off window. Clean white-paper PDF ready.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2.5">
+          <button onclick="copyStatementSummary('csm')" class="px-4 py-2 rounded-lg text-xs font-semibold bg-obsidian-800 hover:bg-obsidian-700 text-gold-300 border border-obsidian-700 transition">
+            Copy Payout Summary
+          </button>
+          <button onclick="printPayoutStatement('csm')" class="px-4 py-2 rounded-lg text-xs font-bold bg-gold-500 hover:bg-gold-400 text-obsidian-950 transition shadow-lg flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            Print / Save PDF Payout Statement
+          </button>
+        </div>
+      </div>
+
+      <div id="csm-statement-sheet" class="statement-sheet bg-obsidian-900 border border-obsidian-800 rounded-2xl overflow-hidden shadow-2xl">
+        <div class="statement-gold-bar h-1.5 w-full bg-gold-500"></div>
+
+        <div class="p-6 sm:p-8 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-obsidian-800 pb-6">
+            <div class="flex items-center gap-3.5">
+              <div class="w-11 h-11 rounded-xl bg-obsidian-950 border border-gold-500/40 flex items-center justify-center shrink-0">
+                <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="13" width="3" height="6" rx="1.5" fill="#D4AF37" fill-opacity="0.65"/>
+                  <rect x="8.5" y="8" width="3" height="16" rx="1.5" fill="#D4AF37" fill-opacity="0.85"/>
+                  <rect x="14" y="3" width="4" height="26" rx="2" fill="#D4AF37"/>
+                  <rect x="20.5" y="8" width="3" height="16" rx="1.5" fill="#D4AF37" fill-opacity="0.85"/>
+                  <rect x="26" y="13" width="3" height="6" rx="1.5" fill="#D4AF37" fill-opacity="0.65"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</div>
+                <div class="text-xs text-gray-400">Performance Funnel Architecture &amp; Client Growth Systems</div>
+                <div class="text-xs text-gold-400 font-semibold mt-0.5">Client Success Manager (CSM) — Monthly Payout Statement</div>
+              </div>
+            </div>
+
+            <div class="sm:text-right space-y-1">
+              <div class="text-[11px] uppercase tracking-wider text-gray-400">Official Contractor Payout Statement</div>
+              <div class="flex sm:justify-end items-center gap-1.5">
+                <span class="text-xs text-gray-400">Statement #:</span>
+                <input id="csm-statement-id" type="text" value="AM-CSM-2026-11A" oninput="saveStatementMeta()" class="bg-obsidian-950 border border-obsidian-700 rounded px-2 py-0.5 text-xs font-mono font-bold text-gold-400 sm:text-right w-40" />
+              </div>
+              <div class="text-xs text-gray-400">FX Reference: <span class="font-mono font-semibold text-white">1 USD = ₱<span class="fx-display-val">63.67</span> PHP</span></div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 bg-obsidian-950 border border-obsidian-800 rounded-xl p-4">
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Client Success Manager (CSM)</label>
+              <input id="csm-contractor-name" type="text" value="Camille Reyes" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Billing Month</label>
+              <input id="csm-billing-month" type="text" value="November 2026" oninput="syncBillingMonthFromStatement(this.value)" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Payout Cut-Off Cycle</label>
+              <select id="csm-cutoff-select" onchange="syncCutoffWindow(this.value)" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white">
+                <option value="cycle1">Cycle 1: 1st–12th Cut-Off → Paid 15th</option>
+                <option value="cycle2">Cycle 2: 13th–27th Cut-Off → Paid 30th</option>
+                <option value="full">Full Month Consolidated (1st–31st)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Scheduled Pay Date</label>
+              <input id="csm-pay-date" type="text" value="November 15, 2026" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Payment Method &amp; Account Details</label>
+              <div class="flex gap-1.5">
+                <select id="csm-pay-method" onchange="saveStatementMeta()" class="bg-obsidian-900 border border-obsidian-700 rounded-lg px-2 py-1.5 text-xs font-semibold text-white">
+                  <option value="Wise">Wise</option>
+                  <option value="BPI">BPI</option>
+                  <option value="GCash">GCash</option>
+                  <option value="PayPal">PayPal</option>
+                </select>
+                <input id="csm-pay-account" type="text" value="camille.reyes@wise.com • PHP Transfer" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-2.5 py-1.5 text-xs text-white" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Prepared &amp; Authorized By</label>
+              <input id="csm-prepared-by" type="text" value="Mark Jowie A. Corrado, Founder — Amplified Media" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+          </div>
+
+          <div class="bg-obsidian-950 border border-obsidian-800 rounded-xl p-4">
+            <div class="text-[11px] font-bold uppercase tracking-wider text-gold-400 mb-2.5">Pipeline &amp; Conversion Performance Snapshot (Optional)</div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Leads Assigned</label>
+                <input id="csm-leads-assigned" type="number" min="0" value="18" oninput="updateCsmCloseRate()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-mono font-bold text-white" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Discovery Calls Held</label>
+                <input id="csm-calls-held" type="number" min="0" value="10" oninput="updateCsmCloseRate()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-mono font-bold text-white" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Deals Closed (Month)</label>
+                <input id="csm-deals-closed" type="number" min="0" value="3" oninput="updateCsmCloseRate()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-mono font-bold text-white" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-gray-400 mb-1">Discovery-to-Close Rate</label>
+                <div id="csm-close-rate-val" class="w-full bg-obsidian-900 border border-obsidian-800 rounded-lg px-3 py-1.5 text-xs font-mono font-bold text-emerald-400">30.0%</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-300 mb-2.5">Itemized Cleared Client Settlements (100% Paid &amp; Verified)</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="text-[11px] uppercase tracking-wider text-gray-400 border-b border-obsidian-700">
+                    <th class="py-2.5 px-2">Monthly Order</th>
+                    <th class="py-2.5 px-3">Client Name</th>
+                    <th class="py-2.5 px-3">Package Tier</th>
+                    <th class="py-2.5 px-3 text-center">Cleared Day</th>
+                    <th class="py-2.5 px-3 text-right">Client Settlement Amount</th>
+                    <th class="py-2.5 px-3 text-right">Commission Rate</th>
+                    <th class="py-2.5 px-3 text-right">Earned Payout (USD)</th>
+                    <th class="py-2.5 px-2 text-right">Earned Payout (PHP)</th>
+                  </tr>
+                </thead>
+                <tbody id="csm-statement-tbody" class="divide-y divide-obsidian-800 text-xs">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="csm-held-deposits-box" class="bg-amber-950/30 border border-amber-500/30 rounded-xl p-3.5 text-xs text-amber-200">
+          </div>
+
+          <div class="print-avoid-break grid grid-cols-1 md:grid-cols-12 gap-4 items-end pt-2">
+            <div class="md:col-span-7 bg-obsidian-950 border border-obsidian-800 rounded-xl p-4 space-y-2">
+              <div class="text-xs font-bold text-white">Pay-When-Paid &amp; Commission Tier Policy</div>
+              <p class="text-[11px] text-gray-400 leading-relaxed">
+                Commissions are earned strictly upon 100% cleared client settlement. Deals #1 and #2 within the calendar month earn 25%; Deal #3 and all subsequent new deals in the same month accelerate to 30%. Monthly Maintenance retainers earn 25%. Partial 50% deposits remain on hold until final 100% settlement clears.
+              </p>
+            </div>
+
+            <div class="md:col-span-5 bg-obsidian-950 border border-gold-500/40 rounded-xl p-4 space-y-2.5">
+              <div class="flex justify-between text-xs">
+                <span class="text-gray-400">Commission Subtotal (USD):</span>
+                <span id="csm-subtotal-usd" class="font-mono font-semibold text-white">$0.00</span>
+              </div>
+              <div class="flex items-center justify-between text-xs gap-2">
+                <span class="text-gray-400">Bonus / Adjustment (USD):</span>
+                <input id="csm-adjustment-usd" type="number" step="1" value="0" oninput="renderStatements()" class="w-24 bg-obsidian-900 border border-obsidian-700 rounded px-2 py-1 text-right font-mono text-xs text-white" />
+              </div>
+              <div class="border-t border-obsidian-800 pt-2.5 flex justify-between items-baseline">
+                <span class="text-xs font-bold uppercase text-gold-400">Total Net Payout (USD):</span>
+                <span id="csm-total-usd" class="text-lg font-extrabold font-mono text-white">$0.00</span>
+              </div>
+              <div class="flex justify-between items-baseline">
+                <span class="text-xs font-semibold text-gray-400">Equivalent PHP Remittance:</span>
+                <span id="csm-total-php" class="text-sm font-bold font-mono text-gold-400">₱0.00 PHP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="print-avoid-break grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-obsidian-800 text-xs">
+            <div>
+              <div class="border-b border-gray-600 h-8 mb-1.5"></div>
+              <div class="font-semibold text-white">Mark Jowie A. Corrado</div>
+              <div class="text-gray-400">Founder — Amplified Media (Authorized Signatory)</div>
+            </div>
+            <div>
+              <div class="border-b border-gray-600 h-8 mb-1.5"></div>
+              <div id="csm-sig-name" class="font-semibold text-white">Camille Reyes</div>
+              <div class="text-gray-400">Client Success Manager (CSM) — Acknowledgment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         TAB 5: FUNNEL DESIGNER PAYOUT STATEMENT (PRINT-READY PDF)
+         ======================================================================== -->
+    <section id="tab-designer" class="tab-panel hidden space-y-5">
+      <div class="no-print bg-obsidian-900 border border-obsidian-800 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <h2 class="text-sm font-bold text-white">Funnel Designer — Payout Statement Generator</h2>
+          <p class="text-xs text-gray-400">Auto-calculates Highest-Tier Monthly Base ($250 / $300 / $350), mid-month tier upgrade adjustments, and +$50 extra build bonuses.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2.5">
+          <button onclick="copyStatementSummary('designer')" class="px-4 py-2 rounded-lg text-xs font-semibold bg-obsidian-800 hover:bg-obsidian-700 text-gold-300 border border-obsidian-700 transition">
+            Copy Payout Summary
+          </button>
+          <button onclick="printPayoutStatement('designer')" class="px-4 py-2 rounded-lg text-xs font-bold bg-gold-500 hover:bg-gold-400 text-obsidian-950 transition shadow-lg flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            Print / Save PDF Payout Statement
+          </button>
+        </div>
+      </div>
+
+      <div id="designer-statement-sheet" class="statement-sheet bg-obsidian-900 border border-obsidian-800 rounded-2xl overflow-hidden shadow-2xl">
+        <div class="statement-gold-bar h-1.5 w-full bg-gold-500"></div>
+
+        <div class="p-6 sm:p-8 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-obsidian-800 pb-6">
+            <div class="flex items-center gap-3.5">
+              <div class="w-11 h-11 rounded-xl bg-obsidian-950 border border-gold-500/40 flex items-center justify-center shrink-0">
+                <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="13" width="3" height="6" rx="1.5" fill="#D4AF37" fill-opacity="0.65"/>
+                  <rect x="8.5" y="8" width="3" height="16" rx="1.5" fill="#D4AF37" fill-opacity="0.85"/>
+                  <rect x="14" y="3" width="4" height="26" rx="2" fill="#D4AF37"/>
+                  <rect x="20.5" y="8" width="3" height="16" rx="1.5" fill="#D4AF37" fill-opacity="0.85"/>
+                  <rect x="26" y="13" width="3" height="6" rx="1.5" fill="#D4AF37" fill-opacity="0.65"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-lg font-extrabold tracking-tight text-white">AMPLIFIED MEDIA</div>
+                <div class="text-xs text-gray-400">Performance Funnel Architecture &amp; Client Growth Systems</div>
+                <div class="text-xs text-gold-400 font-semibold mt-0.5">Funnel Designer — Monthly Payout Statement</div>
+              </div>
+            </div>
+
+            <div class="sm:text-right space-y-1">
+              <div class="text-[11px] uppercase tracking-wider text-gray-400">Official Contractor Payout Statement</div>
+              <div class="flex sm:justify-end items-center gap-1.5">
+                <span class="text-xs text-gray-400">Statement #:</span>
+                <input id="des-statement-id" type="text" value="AM-DES-2026-11A" oninput="saveStatementMeta()" class="bg-obsidian-950 border border-obsidian-700 rounded px-2 py-0.5 text-xs font-mono font-bold text-gold-400 sm:text-right w-40" />
+              </div>
+              <div class="text-xs text-gray-400">FX Reference: <span class="font-mono font-semibold text-white">1 USD = ₱<span class="fx-display-val">63.67</span> PHP</span></div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 bg-obsidian-950 border border-obsidian-800 rounded-xl p-4">
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Funnel Designer Full Name</label>
+              <input id="des-contractor-name" type="text" value="Rafael Mendoza" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Billing Month</label>
+              <input id="des-billing-month" type="text" value="November 2026" oninput="syncBillingMonthFromStatement(this.value)" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Payout Cut-Off Cycle</label>
+              <select id="des-cutoff-select" onchange="syncCutoffWindow(this.value)" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white">
+                <option value="cycle1">Cycle 1: 1st–12th Cut-Off → Paid 15th</option>
+                <option value="cycle2">Cycle 2: 13th–27th Cut-Off → Paid 30th</option>
+                <option value="full">Full Month Consolidated (1st–31st)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Scheduled Pay Date</label>
+              <input id="des-pay-date" type="text" value="November 15, 2026" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Payment Method &amp; Account Details</label>
+              <div class="flex gap-1.5">
+                <select id="des-pay-method" onchange="saveStatementMeta()" class="bg-obsidian-900 border border-obsidian-700 rounded-lg px-2 py-1.5 text-xs font-semibold text-white">
+                  <option value="Wise">Wise</option>
+                  <option value="BPI">BPI</option>
+                  <option value="GCash">GCash</option>
+                  <option value="PayPal">PayPal</option>
+                </select>
+                <input id="des-pay-account" type="text" value="rafael.mendoza@bpi.com.ph • BPI Savings" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-2.5 py-1.5 text-xs text-white" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1">Prepared &amp; Authorized By</label>
+              <input id="des-prepared-by" type="text" value="Mark Jowie A. Corrado, Founder — Amplified Media" oninput="saveStatementMeta()" class="w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-1.5 text-xs font-semibold text-white" />
+            </div>
+          </div>
+
+          <div id="des-tier-logic-box" class="bg-obsidian-950 border border-obsidian-800 rounded-xl p-4 text-xs space-y-1.5">
+          </div>
+
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-300 mb-2.5">Itemized Cleared &amp; Approved Deliverables (Active Payout Window)</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="text-[11px] uppercase tracking-wider text-gray-400 border-b border-obsidian-700">
+                    <th class="py-2.5 px-2">Build #</th>
+                    <th class="py-2.5 px-3">Client Name</th>
+                    <th class="py-2.5 px-3">Deliverable / Package Tier</th>
+                    <th class="py-2.5 px-3 text-center">Cleared Day</th>
+                    <th class="py-2.5 px-3 text-center">QA Build Status</th>
+                    <th class="py-2.5 px-3 text-right">Allocation Type</th>
+                    <th class="py-2.5 px-2 text-right">Extra Build Bonus</th>
+                  </tr>
+                </thead>
+                <tbody id="des-statement-tbody" class="divide-y divide-obsidian-800 text-xs">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="print-avoid-break grid grid-cols-1 md:grid-cols-12 gap-4 items-end pt-2">
+            <div class="md:col-span-7 bg-obsidian-950 border border-obsidian-800 rounded-xl p-4 space-y-2">
+              <div class="text-xs font-bold text-white">Highest-Tier Base &amp; Deliverable QA Policy</div>
+              <p class="text-[11px] text-gray-400 leading-relaxed">
+                Monthly Base scales automatically to the highest 100% cleared &amp; approved build tier in the billing month ($250 Tier 1 / $300 Tier 2 / $350 Tier 3; $0 if zero cleared builds). Split 50% on the 15th (Cycle 1) and 50% on the 30th (Cycle 2) with automatic mid-month tier upgrade reconciliation. Each additional approved new build beyond the 1st earns +$50. Monthly Maintenance updates are included within the monthly base.
+              </p>
+            </div>
+
+            <div class="md:col-span-5 bg-obsidian-950 border border-gold-500/40 rounded-xl p-4 space-y-2">
+              <div class="flex justify-between text-xs">
+                <span id="des-base-label" class="text-gray-400">Cycle Base Allocation (USD):</span>
+                <span id="des-base-usd" class="font-mono font-semibold text-white">$0.00</span>
+              </div>
+              <div id="des-upgrade-row" class="flex justify-between text-xs text-emerald-400 hidden">
+                <span>Mid-Month Tier Upgrade Adj.:</span>
+                <span id="des-upgrade-usd" class="font-mono font-semibold">+$0.00</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-gray-400">Extra Approved Build Bonuses:</span>
+                <span id="des-bonus-usd" class="font-mono font-semibold text-white">$0.00</span>
+              </div>
+              <div class="flex items-center justify-between text-xs gap-2">
+                <span class="text-gray-400">Custom Adjustment (USD):</span>
+                <input id="des-adjustment-usd" type="number" step="1" value="0" oninput="renderStatements()" class="w-24 bg-obsidian-900 border border-obsidian-700 rounded px-2 py-1 text-right font-mono text-xs text-white" />
+              </div>
+              <div class="border-t border-obsidian-800 pt-2 flex justify-between items-baseline">
+                <span class="text-xs font-bold uppercase text-gold-400">Total Net Payout (USD):</span>
+                <span id="des-total-usd" class="text-lg font-extrabold font-mono text-white">$0.00</span>
+              </div>
+              <div class="flex justify-between items-baseline">
+                <span class="text-xs font-semibold text-gray-400">Equivalent PHP Remittance:</span>
+                <span id="des-total-php" class="text-sm font-bold font-mono text-gold-400">₱0.00 PHP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="print-avoid-break grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-obsidian-800 text-xs">
+            <div>
+              <div class="border-b border-gray-600 h-8 mb-1.5"></div>
+              <div class="font-semibold text-white">Mark Jowie A. Corrado</div>
+              <div class="text-gray-400">Founder — Amplified Media (Authorized Signatory)</div>
+            </div>
+            <div>
+              <div class="border-b border-gray-600 h-8 mb-1.5"></div>
+              <div id="des-sig-name" class="font-semibold text-white">Rafael Mendoza</div>
+              <div class="text-gray-400">Funnel Designer — Acknowledgment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="no-print border-t border-obsidian-800/80 bg-obsidian-950 py-4 px-4 sm:px-6 text-center text-xs text-gray-500">
+    Amplified Media Operations Suite • Local-First Encrypted Browser Storage • Zero External Server Dependency
+  </footer>
+
+  <!-- ==========================================================================
+       APPLICATION LOGIC (STATE, SIMULATOR, LEDGER, STATEMENTS, PRINT & BACKUP)
+       ========================================================================== -->
+  <script>
+    const STORAGE_KEY = 'amplified_media_ops_suite_v3';
+
+    const TIER_CONFIG = {
+      T1: { code: 'T1', name: 'Tier 1 — Starter Funnel', price: 1250, designerBase: 250, isNewBuild: true },
+      T2: { code: 'T2', name: 'Tier 2 — Growth System', price: 1750, designerBase: 300, isNewBuild: true },
+      T3: { code: 'T3', name: 'Tier 3 — Full Scale Architecture', price: 2250, designerBase: 350, isNewBuild: true },
+      MAINT: { code: 'MAINT', name: 'Monthly Maintenance Retainer', price: 300, designerBase: 0, isNewBuild: false }
+    };
+
+    // Default Initial State
+    let appState = {
+      activeTab: 'simulator',
+      fxRate: 63.67,
+      billingMonth: 'November 2026',
+      cutoffWindow: 'cycle1',
+      ledgerFilter: 'all',
+      simulator: {
+        t1: 1,
+        t2: 1,
+        t3: 0,
+        maint: 1,
+        adsMgmt: 0,
+        adSpend: 500
+      },
+      deals: [
+        {
+          id: 'deal-101',
+          clientName: 'Vanguard Aesthetics Clinic',
+          tier: 'T1',
+          paymentStatus: 'cleared',
+          clearedDay: 6,
+          buildStatus: 'approved'
+        },
+        {
+          id: 'deal-102',
+          clientName: 'Summit Peak Solar Co.',
+          tier: 'T2',
+          paymentStatus: 'cleared',
+          clearedDay: 11,
+          buildStatus: 'approved'
+        },
+        {
+          id: 'deal-103',
+          clientName: 'Nexus Wealth Advisory',
+          tier: 'T3',
+          paymentStatus: 'cleared',
+          clearedDay: 19,
+          buildStatus: 'approved'
+        },
+        {
+          id: 'deal-104',
+          clientName: 'Horizon MedSpa Group',
+          tier: 'MAINT',
+          paymentStatus: 'cleared',
+          clearedDay: 22,
+          buildStatus: 'approved'
+        },
+        {
+          id: 'deal-105',
+          clientName: 'Ironclad Fitness Studios',
+          tier: 'T2',
+          paymentStatus: 'deposit',
+          clearedDay: 25,
+          buildStatus: 'in_progress'
+        }
+      ],
+      statements: {
+        founder: {
+          statementId: 'AM-FND-2026-11A',
+          contractorName: 'Mark Jowie A. Corrado',
+          payDate: 'November 15, 2026',
+          payMethod: 'BPI',
+          payAccount: 'jowie.corrado@bpi.com.ph • BPI Savings',
+          entityClass: 'Amplified Media — Sole Proprietorship / Owner Draw',
+          adSpendUsd: 250,
+          otherExpenseUsd: 0,
+          adjustmentUsd: 0
+        },
+        csm: {
+          statementId: 'AM-CSM-2026-11A',
+          contractorName: 'Camille Reyes',
+          payDate: 'November 15, 2026',
+          payMethod: 'Wise',
+          payAccount: 'camille.reyes@wise.com • PHP Transfer',
+          preparedBy: 'Mark Jowie A. Corrado, Founder — Amplified Media',
+          leadsAssigned: 18,
+          callsHeld: 10,
+          dealsClosed: 3,
+          adjustmentUsd: 0
+        },
+        designer: {
+          statementId: 'AM-DES-2026-11A',
+          contractorName: 'Rafael Mendoza',
+          payDate: 'November 15, 2026',
+          payMethod: 'BPI',
+          payAccount: 'rafael.mendoza@bpi.com.ph • BPI Savings',
+          preparedBy: 'Mark Jowie A. Corrado, Founder — Amplified Media',
+          adjustmentUsd: 0
+        }
+      }
+    };
+
+    // Currency Formatters
+    function fmtUSD(val) {
+      return '$' + Number(val || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+    function fmtPHP(val) {
+      return '₱' + Number(val || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    // Toast Notification Helper
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const borderColor = type === 'error' ? 'border-red-500/60 text-red-200' : 'border-gold-500/60 text-gold-200';
+      toast.className = `bg-obsidian-900 border ${borderColor} px-4 py-3 rounded-xl shadow-2xl text-xs font-medium flex items-center justify-between gap-3 transition-all duration-300`;
+      toast.innerHTML = `<span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    // Custom Confirmation Modal
+    function openConfirmModal(title, message, onConfirm) {
+      const overlay = document.getElementById('modal-overlay');
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-message').textContent = message;
+      overlay.classList.remove('hidden');
+
+      const cancelBtn = document.getElementById('modal-cancel');
+      const confirmBtn = document.getElementById('modal-confirm');
+
+      const cleanup = () => {
+        overlay.classList.add('hidden');
+        cancelBtn.onclick = null;
+        confirmBtn.onclick = null;
+      };
+
+      cancelBtn.onclick = cleanup;
+      confirmBtn.onclick = () => {
+        cleanup();
+        onConfirm();
+      };
+    }
+
+    // Persistence
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      } catch (e) {
+        console.error('LocalStorage save failed:', e);
+      }
+    }
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          appState = {
+            ...appState,
+            ...parsed,
+            simulator: { ...appState.simulator, ...(parsed.simulator || {}) },
+            statements: {
+              founder: { ...appState.statements.founder, ...(parsed.statements?.founder || {}) },
+              csm: { ...appState.statements.csm, ...(parsed.statements?.csm || {}) },
+              designer: { ...appState.statements.designer, ...(parsed.statements?.designer || {}) }
+            }
+          };
+        }
+      } catch (e) {
+        console.error('LocalStorage load failed:', e);
+      }
+    }
+
+    function switchTab(tabKey) {
+      appState.activeTab = tabKey;
+      saveState();
+
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.add('hidden'));
+      document.getElementById(`tab-${tabKey}`).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-gold-500', 'text-obsidian-950');
+        btn.classList.add('bg-obsidian-800', 'text-gray-300');
+      });
+      const activeBtn = document.getElementById(`nav-tab-${tabKey}`);
+      activeBtn.classList.remove('bg-obsidian-800', 'text-gray-300');
+      activeBtn.classList.add('bg-gold-500', 'text-obsidian-950');
+
+      if (tabKey === 'simulator') updateSimulator();
+      if (tabKey === 'ledger') renderLedger();
+      if (tabKey === 'founder' || tabKey === 'csm' || tabKey === 'designer') renderStatements();
+    }
+
+    function syncCutoffWindow(windowVal) {
+      appState.cutoffWindow = windowVal;
+      document.getElementById('global-cutoff-selector').value = windowVal;
+      document.getElementById('fnd-cutoff-select').value = windowVal;
+      document.getElementById('csm-cutoff-select').value = windowVal;
+      document.getElementById('des-cutoff-select').value = windowVal;
+
+      const monthPrefix = appState.billingMonth.split(' ')[0] || 'November';
+      const yearSuffix = appState.billingMonth.split(' ')[1] || '2026';
+      if (windowVal === 'cycle1') {
+        appState.statements.founder.payDate = `${monthPrefix} 15, ${yearSuffix}`;
+        appState.statements.csm.payDate = `${monthPrefix} 15, ${yearSuffix}`;
+        appState.statements.designer.payDate = `${monthPrefix} 15, ${yearSuffix}`;
+      } else if (windowVal === 'cycle2') {
+        appState.statements.founder.payDate = `${monthPrefix} 30, ${yearSuffix}`;
+        appState.statements.csm.payDate = `${monthPrefix} 30, ${yearSuffix}`;
+        appState.statements.designer.payDate = `${monthPrefix} 30, ${yearSuffix}`;
+      } else {
+        appState.statements.founder.payDate = `${monthPrefix} 30, ${yearSuffix} (Consolidated)`;
+        appState.statements.csm.payDate = `${monthPrefix} 30, ${yearSuffix} (Consolidated)`;
+        appState.statements.designer.payDate = `${monthPrefix} 30, ${yearSuffix} (Consolidated)`;
+      }
+      document.getElementById('fnd-pay-date').value = appState.statements.founder.payDate;
+      document.getElementById('csm-pay-date').value = appState.statements.csm.payDate;
+      document.getElementById('des-pay-date').value = appState.statements.designer.payDate;
+
+      saveState();
+      renderLedger();
+      renderStatements();
+    }
+
+    function syncBillingMonthFromStatement(newVal) {
+      appState.billingMonth = newVal;
+      document.getElementById('global-billing-month').value = newVal;
+      document.getElementById('fnd-billing-month').value = newVal;
+      document.getElementById('csm-billing-month').value = newVal;
+      document.getElementById('des-billing-month').value = newVal;
+      saveState();
+    }
+
+    function adjustSimCount(key, delta) {
+      appState.simulator[key] = Math.max(0, (appState.simulator[key] || 0) + delta);
+      saveState();
+      updateSimulator();
+    }
+
+    function applySimPreset(preset) {
+      if (preset === 'launch') {
+        appState.simulator = { t1: 1, t2: 0, t3: 0, maint: 0, adsMgmt: 0, adSpend: 250 };
+      } else if (preset === 'steady') {
+        appState.simulator = { t1: 1, t2: 1, t3: 0, maint: 1, adsMgmt: 0, adSpend: 500 };
+      } else if (preset === 'scale') {
+        appState.simulator = { t1: 1, t2: 1, t3: 1, maint: 2, adsMgmt: 1, adSpend: 1000 };
+      } else if (preset === 'zero') {
+        appState.simulator = { t1: 0, t2: 0, t3: 0, maint: 0, adsMgmt: 0, adSpend: 300 };
+      }
+      saveState();
+      updateSimulator();
+      showToast('Simulator preset loaded.');
+    }
+
+    function updateSimulator() {
+      const s = appState.simulator;
+      const fx = appState.fxRate;
+
+      s.adSpend = Number(document.getElementById('sim-adspend-slider').value || 0);
+      document.getElementById('sim-t1-val').textContent = s.t1;
+      document.getElementById('sim-t2-val').textContent = s.t2;
+      document.getElementById('sim-t3-val').textContent = s.t3;
+      document.getElementById('sim-maint-val').textContent = s.maint;
+      document.getElementById('sim-adsMgmt-val').textContent = s.adsMgmt;
+      document.getElementById('sim-adspend-display').textContent = fmtUSD(s.adSpend);
+
+      const simDeals = [];
+      for (let i = 0; i < s.t1; i++) simDeals.push({ label: 'Tier 1 — Starter Funnel', price: 1250, isNewBuild: true });
+      for (let i = 0; i < s.t2; i++) simDeals.push({ label: 'Tier 2 — Growth System', price: 1750, isNewBuild: true });
+      for (let i = 0; i < s.t3; i++) simDeals.push({ label: 'Tier 3 — Full Scale Architecture', price: 2250, isNewBuild: true });
+      for (let i = 0; i < s.maint; i++) simDeals.push({ label: 'Monthly Maintenance Retainer', price: 300, isNewBuild: false });
+      for (let i = 0; i < s.adsMgmt; i++) simDeals.push({ label: 'Paid Ads Management Retainer', price: 500, isNewBuild: false });
+
+      let grossRev = 0;
+      let csmTotal = 0;
+      let newBuildCounter = 0;
+
+      const tbody = document.getElementById('sim-waterfall-body');
+      tbody.innerHTML = '';
+
+      if (simDeals.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-4 text-center text-gray-500">Zero cleared deals simulated. Designer base is $0 and CSM payout is $0.</td></tr>`;
+      } else {
+        simDeals.forEach((deal, idx) => {
+          grossRev += deal.price;
+          let rate = 0.25;
+          let orderLabel = 'Retainer';
+
+          if (deal.isNewBuild) {
+            newBuildCounter++;
+            orderLabel = `Deal #${newBuildCounter}`;
+            rate = newBuildCounter >= 3 ? 0.30 : 0.25;
+          } else {
+            orderLabel = `Retainer #${idx + 1}`;
+            rate = 0.25;
+          }
+
+          const csmCut = deal.price * rate;
+          csmTotal += csmCut;
+
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="py-2.5 pr-3 font-mono text-gray-300">${orderLabel}</td>
+            <td class="py-2.5 px-3 font-medium text-white">${deal.label}</td>
+            <td class="py-2.5 px-3 text-right font-mono text-gray-200">${fmtUSD(deal.price)}</td>
+            <td class="py-2.5 px-3 text-right font-mono ${rate === 0.30 ? 'text-gold-400 font-bold' : 'text-gray-400'}">${(rate * 100).toFixed(0)}%</td>
+            <td class="py-2.5 pl-3 text-right font-mono font-semibold text-white">${fmtUSD(csmCut)}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      const totalNewBuilds = s.t1 + s.t2 + s.t3;
+      let designerBase = 0;
+      if (s.t3 > 0) designerBase = 350;
+      else if (s.t2 > 0) designerBase = 300;
+      else if (s.t1 > 0) designerBase = 250;
+
+      const extraBuilds = Math.max(0, totalNewBuilds - 1);
+      const designerBonus = extraBuilds * 50;
+      const designerTotal = designerBase + designerBonus;
+
+      const overhead = grossRev * 0.10;
+      const founderNet = grossRev - csmTotal - designerTotal - overhead - s.adSpend;
+      const marginPct = grossRev > 0 ? ((founderNet / grossRev) * 100).toFixed(1) : '0.0';
+
+      const cac = totalNewBuilds > 0 ? (s.adSpend / totalNewBuilds) : 0;
+      const roas = s.adSpend > 0 ? (grossRev / s.adSpend) : 0;
+
+      document.getElementById('sim-gross-usd').textContent = fmtUSD(grossRev);
+      document.getElementById('sim-gross-php').textContent = `${fmtPHP(grossRev * fx)} PHP`;
+
+      document.getElementById('sim-founder-usd').textContent = fmtUSD(founderNet);
+      document.getElementById('sim-founder-usd').className = `text-2xl font-extrabold font-mono mt-1 ${founderNet < 0 ? 'text-red-400' : 'text-white'}`;
+      document.getElementById('sim-founder-php').textContent = `${fmtPHP(founderNet * fx)} PHP (After Ad Spend)`;
+      document.getElementById('sim-margin-pct').textContent = `${marginPct}% Margin`;
+
+      document.getElementById('sim-csm-usd').textContent = fmtUSD(csmTotal);
+      document.getElementById('sim-csm-php').textContent = `${fmtPHP(csmTotal * fx)} PHP`;
+
+      document.getElementById('sim-designer-usd').textContent = fmtUSD(designerTotal);
+      document.getElementById('sim-designer-php').textContent = `${fmtPHP(designerTotal * fx)} PHP`;
+      document.getElementById('sim-designer-badge').textContent = designerBase > 0
+        ? `Base $${designerBase} + $${designerBonus} Bonus`
+        : '$0 Base (0 Builds)';
+
+      document.getElementById('sim-overhead-usd').textContent = fmtUSD(overhead);
+      document.getElementById('sim-cac-val').textContent = totalNewBuilds > 0 ? fmtUSD(cac) : 'N/A (0 Builds)';
+      document.getElementById('sim-roas-val').textContent = s.adSpend > 0 ? `${roas.toFixed(2)}x` : '∞ (Organic)';
+    }
+
+    function isDayInCutoff(day, cutoffWindow) {
+      if (cutoffWindow === 'cycle1') return day >= 1 && day <= 12;
+      if (cutoffWindow === 'cycle2') return day >= 13 && day <= 27;
+      return true;
+    }
+
+    function getCycleLabelForDay(day) {
+      if (day >= 1 && day <= 12) return 'Cycle 1 (15th)';
+      if (day >= 13 && day <= 27) return 'Cycle 2 (30th)';
+      return '28th+ Rollover';
+    }
+
+    function calculateAgencyFinancials() {
+      const sortedAll = [...appState.deals].sort((a, b) => a.clearedDay - b.clearedDay);
+      const clearedFullMonth = sortedAll.filter(d => d.paymentStatus === 'cleared');
+
+      let clearedNewBuildRank = 0;
+      const enrichedCleared = clearedFullMonth.map(deal => {
+        const tierInfo = TIER_CONFIG[deal.tier];
+        let commRate = 0.25;
+        let monthlyOrderLabel = 'Retainer';
+
+        if (tierInfo.isNewBuild) {
+          clearedNewBuildRank++;
+          commRate = clearedNewBuildRank >= 3 ? 0.30 : 0.25;
+          monthlyOrderLabel = `Deal #${clearedNewBuildRank}`;
+        } else {
+          monthlyOrderLabel = 'Maintenance';
+        }
+
+        return {
+          ...deal,
+          tierInfo,
+          commRate,
+          csmPayoutUsd: tierInfo.price * commRate,
+          monthlyOrderLabel,
+          newBuildRank: tierInfo.isNewBuild ? clearedNewBuildRank : null
+        };
+      });
+
+      const fullMonthClearedRev = enrichedCleared.reduce((sum, d) => sum + d.tierInfo.price, 0);
+      const heldDepositsTotal = sortedAll
+        .filter(d => d.paymentStatus === 'deposit')
+        .reduce((sum, d) => sum + (TIER_CONFIG[d.tier].price * 0.5), 0);
+
+      const clearedApprovedBuildsFull = enrichedCleared.filter(
+        d => d.tierInfo.isNewBuild && d.buildStatus === 'approved'
+      );
+
+      const getHighestBase = (buildsList) => {
+        if (buildsList.some(b => b.tier === 'T3')) return { base: 350, label: 'Tier 3 ($350/mo)' };
+        if (buildsList.some(b => b.tier === 'T2')) return { base: 300, label: 'Tier 2 ($300/mo)' };
+        if (buildsList.some(b => b.tier === 'T1')) return { base: 250, label: 'Tier 1 ($250/mo)' };
+        return { base: 0, label: 'No Cleared Builds ($0)' };
+      };
+
+      const fullMonthDesignerTier = getHighestBase(clearedApprovedBuildsFull);
+      const fullMonthDesignerBonus = Math.max(0, clearedApprovedBuildsFull.length - 1) * 50;
+      const fullMonthDesignerTotal = fullMonthDesignerTier.base + fullMonthDesignerBonus;
+
+      const fullMonthCsmTotal = enrichedCleared.reduce((sum, d) => sum + d.csmPayoutUsd, 0);
+      const fullMonthOverhead = fullMonthClearedRev * 0.10;
+      const fullMonthFounderNet = fullMonthClearedRev - fullMonthCsmTotal - fullMonthDesignerTotal - fullMonthOverhead;
+
+      const windowClearedDeals = enrichedCleared.filter(d => isDayInCutoff(d.clearedDay, appState.cutoffWindow));
+      const windowClearedRev = windowClearedDeals.reduce((sum, d) => sum + d.tierInfo.price, 0);
+      const windowOverhead = windowClearedRev * 0.10;
+      const windowCsmTotal = windowClearedDeals.reduce((sum, d) => sum + d.csmPayoutUsd, 0);
+
+      const cycle1Builds = clearedApprovedBuildsFull.filter(d => d.clearedDay >= 1 && d.clearedDay <= 12);
+      const cycle2Builds = clearedApprovedBuildsFull.filter(d => d.clearedDay >= 13 && d.clearedDay <= 27);
+
+      const cycle1Highest = getHighestBase(cycle1Builds);
+      const cycle1HalfBase = cycle1Highest.base * 0.5;
+      const cycle1ExtraBuilds = Math.max(0, cycle1Builds.length - 1);
+      const cycle1Bonus = cycle1ExtraBuilds * 50;
+
+      const fullHalfBase = fullMonthDesignerTier.base * 0.5;
+      const midMonthUpgradeAdj = Math.max(0, fullHalfBase - cycle1HalfBase);
+      const cycle2BonusBuildsCount = cycle2Builds.filter(b => b.newBuildRank > 1).length;
+      const cycle2Bonus = cycle2BonusBuildsCount * 50;
+
+      let windowDesignerBase = 0;
+      let windowDesignerUpgrade = 0;
+      let windowDesignerBonus = 0;
+      let windowDesignerBuilds = [];
+
+      if (appState.cutoffWindow === 'cycle1') {
+        windowDesignerBase = cycle1HalfBase;
+        windowDesignerUpgrade = 0;
+        windowDesignerBonus = cycle1Bonus;
+        windowDesignerBuilds = cycle1Builds;
+      } else if (appState.cutoffWindow === 'cycle2') {
+        windowDesignerBase = fullHalfBase;
+        windowDesignerUpgrade = midMonthUpgradeAdj;
+        windowDesignerBonus = cycle2Bonus;
+        windowDesignerBuilds = cycle2Builds;
+      } else {
+        windowDesignerBase = fullMonthDesignerTier.base;
+        windowDesignerUpgrade = 0;
+        windowDesignerBonus = fullMonthDesignerBonus;
+        windowDesignerBuilds = clearedApprovedBuildsFull;
+      }
+
+      const windowDesignerSubtotal = windowDesignerBase + windowDesignerUpgrade + windowDesignerBonus;
+
+      return {
+        sortedAll,
+        enrichedCleared,
+        fullMonthClearedRev,
+        heldDepositsTotal,
+        fullMonthDesignerTier,
+        fullMonthDesignerTotal,
+        fullMonthCsmTotal,
+        fullMonthFounderNet,
+        windowClearedDeals,
+        windowClearedRev,
+        windowOverhead,
+        windowCsmTotal,
+        cycle1Highest,
+        cycle1HalfBase,
+        fullHalfBase,
+        windowDesignerBase,
+        windowDesignerUpgrade,
+        windowDesignerBonus,
+        windowDesignerSubtotal,
+        windowDesignerBuilds
+      };
+    }
+
+    function handleAddDeal(e) {
+      e.preventDefault();
+      const clientName = document.getElementById('deal-client-name').value.trim();
+      const tier = document.getElementById('deal-tier').value;
+      const paymentStatus = document.getElementById('deal-payment-status').value;
+      const clearedDay = Math.min(31, Math.max(1, parseInt(document.getElementById('deal-cleared-day').value, 10) || 1));
+      const buildStatus = document.getElementById('deal-build-status').value;
+
+      if (!clientName) return;
+
+      appState.deals.push({
+        id: 'deal-' + Date.now(),
+        clientName,
+        tier,
+        paymentStatus,
+        clearedDay,
+        buildStatus
+      });
+
+      document.getElementById('deal-client-name').value = '';
+      saveState();
+      renderLedger();
+      renderStatements();
+      showToast(`Added "${clientName}" to Master Ledger.`);
+    }
+
+    function toggleDealPaymentStatus(id) {
+      const deal = appState.deals.find(d => d.id === id);
+      if (!deal) return;
+      const order = ['unpaid', 'deposit', 'cleared'];
+      const next = order[(order.indexOf(deal.paymentStatus) + 1) % order.length];
+      deal.paymentStatus = next;
+      saveState();
+      renderLedger();
+      renderStatements();
+    }
+
+    function toggleDealBuildStatus(id) {
+      const deal = appState.deals.find(d => d.id === id);
+      if (!deal) return;
+      deal.buildStatus = deal.buildStatus === 'approved' ? 'in_progress' : 'approved';
+      saveState();
+      renderLedger();
+      renderStatements();
+    }
+
+    function deleteDeal(id) {
+      appState.deals = appState.deals.filter(d => d.id !== id);
+      saveState();
+      renderLedger();
+      renderStatements();
+      showToast('Client entry removed.');
+    }
+
+    function setLedgerFilter(filterKey) {
+      appState.ledgerFilter = filterKey;
+      document.querySelectorAll('.filter-pill').forEach(btn => {
+        if (btn.dataset.filter === filterKey) {
+          btn.classList.remove('bg-obsidian-800', 'text-gray-300');
+          btn.classList.add('bg-gold-500', 'text-obsidian-950', 'font-semibold');
+        } else {
+          btn.classList.remove('bg-gold-500', 'text-obsidian-950', 'font-semibold');
+          btn.classList.add('bg-obsidian-800', 'text-gray-300');
+        }
+      });
+      renderLedger();
+    }
+
+    function renderLedger() {
+      const fin = calculateAgencyFinancials();
+      const fx = appState.fxRate;
+
+      document.getElementById('kpi-cleared-rev').textContent = fmtUSD(fin.fullMonthClearedRev);
+      document.getElementById('kpi-cleared-rev-php').textContent = `${fmtPHP(fin.fullMonthClearedRev * fx)} PHP`;
+
+      document.getElementById('kpi-held-deposits').textContent = fmtUSD(fin.heldDepositsTotal);
+
+      document.getElementById('kpi-highest-tier').textContent = `$${fin.fullMonthDesignerTier.base} Base`;
+      document.getElementById('kpi-highest-tier-label').textContent = fin.fullMonthDesignerTier.label;
+
+      document.getElementById('kpi-csm-earned').textContent = fmtUSD(fin.windowCsmTotal);
+      document.getElementById('kpi-csm-earned-php').textContent = `${fmtPHP(fin.windowCsmTotal * fx)} PHP`;
+
+      document.getElementById('kpi-designer-earned').textContent = fmtUSD(fin.windowDesignerSubtotal);
+      document.getElementById('kpi-designer-earned-php').textContent = `${fmtPHP(fin.windowDesignerSubtotal * fx)} PHP`;
+
+      document.getElementById('kpi-founder-net').textContent = fmtUSD(fin.fullMonthFounderNet);
+      document.getElementById('kpi-founder-net-php').textContent = `${fmtPHP(fin.fullMonthFounderNet * fx)} PHP`;
+
+      const enrichedMap = new Map(fin.enrichedCleared.map(d => [d.id, d]));
+      let list = [...appState.deals];
+
+      if (appState.ledgerFilter === 'cleared') list = list.filter(d => d.paymentStatus === 'cleared');
+      else if (appState.ledgerFilter === 'deposit') list = list.filter(d => d.paymentStatus === 'deposit');
+      else if (appState.ledgerFilter === 'cycle1') list = list.filter(d => d.clearedDay >= 1 && d.clearedDay <= 12);
+      else if (appState.ledgerFilter === 'cycle2') list = list.filter(d => d.clearedDay >= 13 && d.clearedDay <= 27);
+      else if (appState.ledgerFilter === 'rollover') list = list.filter(d => d.clearedDay >= 28);
+
+      const sortMode = document.getElementById('ledger-sort-select').value;
+      if (sortMode === 'day_asc') list.sort((a, b) => a.clearedDay - b.clearedDay);
+      else if (sortMode === 'amount_desc') list.sort((a, b) => TIER_CONFIG[b.tier].price - TIER_CONFIG[a.tier].price);
+      else if (sortMode === 'status') list.sort((a, b) => a.paymentStatus.localeCompare(b.paymentStatus));
+
+      const tbody = document.getElementById('ledger-table-body');
+      tbody.innerHTML = '';
+
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" class="py-6 text-center text-gray-500">No client deals match the selected filter.</td></tr>`;
+        return;
+      }
+
+      list.forEach(deal => {
+        const tier = TIER_CONFIG[deal.tier];
+        const enriched = enrichedMap.get(deal.id);
+
+        let payBadge = '';
+        if (deal.paymentStatus === 'cleared') {
+          payBadge = `<button onclick="toggleDealPaymentStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition">100% Paid (Cleared)</button>`;
+        } else if (deal.paymentStatus === 'deposit') {
+          payBadge = `<button onclick="toggleDealPaymentStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 transition">50% Deposit Paid</button>`;
+        } else {
+          payBadge = `<button onclick="toggleDealPaymentStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-red-500/15 text-red-300 border border-red-500/30 hover:bg-red-500/25 transition">Unpaid</button>`;
+        }
+
+        const buildBadge = deal.buildStatus === 'approved'
+          ? `<button onclick="toggleDealBuildStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-gold-500/15 text-gold-300 border border-gold-500/30 hover:bg-gold-500/25 transition">Approved &amp; Functional ✓</button>`
+          : `<button onclick="toggleDealBuildStatus('${deal.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-medium bg-obsidian-800 text-gray-400 border border-obsidian-700 hover:text-white transition">In Progress</button>`;
+
+        const rankCell = enriched
+          ? `<span class="font-mono font-bold text-gold-400">${enriched.monthlyOrderLabel}</span>`
+          : `<span class="text-gray-500 italic">On Hold</span>`;
+
+        const rateCell = enriched
+          ? `<span class="font-mono font-semibold ${enriched.commRate === 0.30 ? 'text-gold-400' : 'text-gray-200'}">${(enriched.commRate * 100).toFixed(0)}%</span>`
+          : `<span class="text-gray-500">—</span>`;
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-obsidian-850/60 transition';
+        tr.innerHTML = `
+          <td class="py-3 px-2">${rankCell}</td>
+          <td class="py-3 px-3 font-semibold text-white">${deal.clientName}</td>
+          <td class="py-3 px-3 text-gray-300">${tier.name}</td>
+          <td class="py-3 px-3 text-right font-mono font-semibold text-white">${fmtUSD(tier.price)}</td>
+          <td class="py-3 px-3 text-center">
+            <span class="font-mono text-gray-200">Day ${deal.clearedDay}</span>
+            <span class="block text-[10px] text-gray-400">${getCycleLabelForDay(deal.clearedDay)}</span>
+          </td>
+          <td class="py-3 px-3 text-center">${payBadge}</td>
+          <td class="py-3 px-3 text-center">${buildBadge}</td>
+          <td class="py-3 px-3 text-right">${rateCell}</td>
+          <td class="py-3 px-2 text-right">
+            <button onclick="deleteDeal('${deal.id}')" class="text-gray-500 hover:text-red-400 p-1 transition" title="Delete Entry">✕</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function saveStatementMeta() {
+      appState.statements.founder.statementId = document.getElementById('fnd-statement-id').value;
+      appState.statements.founder.contractorName = document.getElementById('fnd-contractor-name').value;
+      appState.statements.founder.payDate = document.getElementById('fnd-pay-date').value;
+      appState.statements.founder.payMethod = document.getElementById('fnd-pay-method').value;
+      appState.statements.founder.payAccount = document.getElementById('fnd-pay-account').value;
+      appState.statements.founder.entityClass = document.getElementById('fnd-entity-class').value;
+
+      appState.statements.csm.statementId = document.getElementById('csm-statement-id').value;
+      appState.statements.csm.contractorName = document.getElementById('csm-contractor-name').value;
+      appState.statements.csm.payDate = document.getElementById('csm-pay-date').value;
+      appState.statements.csm.payMethod = document.getElementById('csm-pay-method').value;
+      appState.statements.csm.payAccount = document.getElementById('csm-pay-account').value;
+      appState.statements.csm.preparedBy = document.getElementById('csm-prepared-by').value;
+
+      appState.statements.designer.statementId = document.getElementById('des-statement-id').value;
+      appState.statements.designer.contractorName = document.getElementById('des-contractor-name').value;
+      appState.statements.designer.payDate = document.getElementById('des-pay-date').value;
+      appState.statements.designer.payMethod = document.getElementById('des-pay-method').value;
+      appState.statements.designer.payAccount = document.getElementById('des-pay-account').value;
+      appState.statements.designer.preparedBy = document.getElementById('des-prepared-by').value;
+
+      document.getElementById('fnd-sig-name').textContent = appState.statements.founder.contractorName;
+      document.getElementById('csm-sig-name').textContent = appState.statements.csm.contractorName;
+      document.getElementById('des-sig-name').textContent = appState.statements.designer.contractorName;
+
+      saveState();
+    }
+
+    function syncFounderAdSpendFromSimulator() {
+      const simAdSpend = Number(appState.simulator.adSpend || 0);
+      const syncedVal = appState.cutoffWindow === 'full' ? simAdSpend : Math.round(simAdSpend * 0.5);
+      appState.statements.founder.adSpendUsd = syncedVal;
+      document.getElementById('fnd-adspend-usd').value = syncedVal;
+      renderStatements();
+      showToast(`Synced $${syncedVal} ad spend from Simulator (${appState.cutoffWindow === 'full' ? '100% Full Month' : '50% Semi-Monthly Split'}).`);
+    }
+
+    function updateCsmCloseRate() {
+      const leads = Number(document.getElementById('csm-leads-assigned').value || 0);
+      const calls = Number(document.getElementById('csm-calls-held').value || 0);
+      const closed = Number(document.getElementById('csm-deals-closed').value || 0);
+
+      appState.statements.csm.leadsAssigned = leads;
+      appState.statements.csm.callsHeld = calls;
+      appState.statements.csm.dealsClosed = closed;
+      saveState();
+
+      const rate = calls > 0 ? ((closed / calls) * 100).toFixed(1) : '0.0';
+      document.getElementById('csm-close-rate-val').textContent = `${rate}%`;
+    }
+
+    function renderStatements() {
+      const fin = calculateAgencyFinancials();
+      const fx = appState.fxRate;
+
+      document.querySelectorAll('.fx-display-val').forEach(el => {
+        el.textContent = fx.toFixed(2);
+      });
+
+      // --- 0. POPULATE FOUNDER PAYOUT STATEMENT ---
+      const windowLabelMap = {
+        cycle1: 'Cycle 1: 1st–12th Cut-Off → Paid 15th',
+        cycle2: 'Cycle 2: 13th–27th Cut-Off → Paid 30th',
+        full: 'Full Month Consolidated (1st–31st)'
+      };
+      document.getElementById('fnd-window-label').textContent = windowLabelMap[appState.cutoffWindow] || '';
+
+      const fndGross = fin.windowClearedRev;
+      const fndCsm = fin.windowCsmTotal;
+      const fndDesigner = fin.windowDesignerSubtotal;
+      const fndOverhead = fin.windowOverhead;
+      const fndOperatingNet = fndGross - fndCsm - fndDesigner - fndOverhead;
+
+      document.getElementById('fnd-wf-gross').textContent = fmtUSD(fndGross);
+      document.getElementById('fnd-wf-csm').textContent = '-' + fmtUSD(fndCsm);
+      document.getElementById('fnd-wf-designer').textContent = '-' + fmtUSD(fndDesigner);
+      document.getElementById('fnd-wf-overhead').textContent = '-' + fmtUSD(fndOverhead);
+      document.getElementById('fnd-wf-operating').textContent = fmtUSD(fndOperatingNet);
+      document.getElementById('fnd-wf-operating').className = `font-mono font-extrabold text-sm mt-0.5 ${fndOperatingNet < 0 ? 'text-red-400' : 'text-emerald-400'}`;
+
+      const fndTbody = document.getElementById('fnd-statement-tbody');
+      fndTbody.innerHTML = '';
+
+      if (fin.windowClearedDeals.length === 0) {
+        fndTbody.innerHTML = `<tr><td colspan="8" class="py-4 text-center text-gray-400">No 100% Cleared client settlements recorded in this payout window.</td></tr>`;
+      } else {
+        fin.windowClearedDeals.forEach(d => {
+          const dealOverhead = d.tierInfo.price * 0.10;
+          const contribution = d.tierInfo.price - d.csmPayoutUsd - dealOverhead;
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="py-2.5 px-2 font-mono font-semibold text-gold-400">${d.monthlyOrderLabel}</td>
+            <td class="py-2.5 px-3 font-semibold text-white">${d.clientName}</td>
+            <td class="py-2.5 px-3 text-gray-300">${d.tierInfo.name}</td>
+            <td class="py-2.5 px-3 text-center font-mono text-gray-300">Day ${d.clearedDay}</td>
+            <td class="py-2.5 px-3 text-right font-mono text-gray-200">${fmtUSD(d.tierInfo.price)}</td>
+            <td class="py-2.5 px-3 text-right font-mono text-gray-400">-${fmtUSD(d.csmPayoutUsd)} (${(d.commRate * 100).toFixed(0)}%)</td>
+            <td class="py-2.5 px-3 text-right font-mono text-gray-400">-${fmtUSD(dealOverhead)}</td>
+            <td class="py-2.5 px-2 text-right font-mono font-bold text-white">${fmtUSD(contribution)}</td>
+          `;
+          fndTbody.appendChild(tr);
+        });
+      }
+
+      const fndAdSpend = Number(document.getElementById('fnd-adspend-usd').value || 0);
+      const fndOtherExp = Number(document.getElementById('fnd-other-expense-usd').value || 0);
+      const fndAdj = Number(document.getElementById('fnd-adjustment-usd').value || 0);
+
+      appState.statements.founder.adSpendUsd = fndAdSpend;
+      appState.statements.founder.otherExpenseUsd = fndOtherExp;
+      appState.statements.founder.adjustmentUsd = fndAdj;
+
+      const totalContractorAndOverhead = fndCsm + fndDesigner + fndOverhead;
+      const totalDirectExpenses = fndAdSpend + fndOtherExp;
+      const fndNetUsd = fndGross - totalContractorAndOverhead - totalDirectExpenses + fndAdj;
+
+      document.getElementById('fnd-sum-gross-usd').textContent = fmtUSD(fndGross);
+      document.getElementById('fnd-sum-deductions-usd').textContent = '-' + fmtUSD(totalContractorAndOverhead);
+      document.getElementById('fnd-sum-expenses-usd').textContent = '-' + fmtUSD(totalDirectExpenses);
+      document.getElementById('fnd-sum-adj-usd').textContent = (fndAdj >= 0 ? '+' : '') + fmtUSD(fndAdj);
+      document.getElementById('fnd-total-usd').textContent = fmtUSD(fndNetUsd);
+      document.getElementById('fnd-total-usd').className = `text-lg font-extrabold font-mono ${fndNetUsd < 0 ? 'text-red-400' : 'text-emerald-400'}`;
+      document.getElementById('fnd-total-php').textContent = `${fmtPHP(fndNetUsd * fx)} PHP`;
+
+      const csmTbody = document.getElementById('csm-statement-tbody');
+      csmTbody.innerHTML = '';
+
+      if (fin.windowClearedDeals.length === 0) {
+        csmTbody.innerHTML = `<tr><td colspan="8" class="py-4 text-center text-gray-400">No 100% Cleared client settlements recorded in this payout window.</td></tr>`;
+      } else {
+        fin.windowClearedDeals.forEach(d => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="py-2.5 px-2 font-mono font-semibold text-gold-400">${d.monthlyOrderLabel}</td>
+            <td class="py-2.5 px-3 font-semibold text-white">${d.clientName}</td>
+            <td class="py-2.5 px-3 text-gray-300">${d.tierInfo.name}</td>
+            <td class="py-2.5 px-3 text-center font-mono text-gray-300">Day ${d.clearedDay}</td>
+            <td class="py-2.5 px-3 text-right font-mono text-gray-200">${fmtUSD(d.tierInfo.price)}</td>
+            <td class="py-2.5 px-3 text-right font-mono font-semibold text-gold-400">${(d.commRate * 100).toFixed(0)}%</td>
+            <td class="py-2.5 px-3 text-right font-mono font-bold text-white">${fmtUSD(d.csmPayoutUsd)}</td>
+            <td class="py-2.5 px-2 text-right font-mono text-gray-300">${fmtPHP(d.csmPayoutUsd * fx)}</td>
+          `;
+          csmTbody.appendChild(tr);
+        });
+      }
+
+      const depositDeals = appState.deals.filter(d => d.paymentStatus === 'deposit');
+      const heldBox = document.getElementById('csm-held-deposits-box');
+      if (depositDeals.length > 0) {
+        const names = depositDeals.map(d => `${d.clientName} (${TIER_CONFIG[d.tier].name} — 50% Deposit Received)`).join('; ');
+        heldBox.innerHTML = `<strong>Pay-When-Paid Hold Notice:</strong> The following client deal(s) currently have a 50% deposit paid and are excluded from this Payout Statement until 100% final settlement clears: <em>${names}</em>.`;
+      } else {
+        heldBox.innerHTML = `<strong>Pay-When-Paid Verification:</strong> All active client settlements for this window are 100% cleared with zero partial deposits pending.`;
+      }
+
+      const csmAdj = Number(document.getElementById('csm-adjustment-usd').value || 0);
+      appState.statements.csm.adjustmentUsd = csmAdj;
+      const csmNetUsd = fin.windowCsmTotal + csmAdj;
+
+      document.getElementById('csm-subtotal-usd').textContent = fmtUSD(fin.windowCsmTotal);
+      document.getElementById('csm-total-usd').textContent = fmtUSD(csmNetUsd);
+      document.getElementById('csm-total-php').textContent = `${fmtPHP(csmNetUsd * fx)} PHP`;
+
+      const tierLogicBox = document.getElementById('des-tier-logic-box');
+      if (appState.cutoffWindow === 'cycle1') {
+        tierLogicBox.innerHTML = `
+          <div class="font-bold text-gold-400">Cycle 1 (Days 1–12) Highest-Tier Base Calculation</div>
+          <div class="text-gray-300">Highest Cleared &amp; Approved Tier in Cycle 1: <strong>${fin.cycle1Highest.label}</strong> → Cycle 1 pays 50% of Monthly Base (<strong>${fmtUSD(fin.windowDesignerBase)}</strong>) + $50 per extra approved new build in Days 1–12.</div>
+        `;
+        document.getElementById('des-base-label').textContent = 'Cycle 1 Base (50% of Tier):';
+      } else if (appState.cutoffWindow === 'cycle2') {
+        tierLogicBox.innerHTML = `
+          <div class="font-bold text-gold-400">Cycle 2 (Days 13–27) Highest-Tier Base &amp; Reconciliation</div>
+          <div class="text-gray-300">Full-Month Highest Cleared Tier: <strong>${fin.fullMonthDesignerTier.label}</strong>. Cycle 2 pays 50% of Full-Month Base (<strong>${fmtUSD(fin.windowDesignerBase)}</strong>)${fin.windowDesignerUpgrade > 0 ? ` + <strong>${fmtUSD(fin.windowDesignerUpgrade)}</strong> automatic Mid-Month Tier Upgrade Adjustment` : ''} + $50 per extra approved new build in Days 13–27.</div>
+        `;
+        document.getElementById('des-base-label').textContent = 'Cycle 2 Base (50% of Full-Mo Tier):';
+      } else {
+        tierLogicBox.innerHTML = `
+          <div class="font-bold text-gold-400">Full-Month Consolidated Highest-Tier Base Calculation</div>
+          <div class="text-gray-300">Full-Month Highest Cleared &amp; Approved Tier: <strong>${fin.fullMonthDesignerTier.label}</strong> → Full Monthly Base (<strong>${fmtUSD(fin.windowDesignerBase)}</strong>) + $50 per extra approved new build beyond the 1st build.</div>
+        `;
+        document.getElementById('des-base-label').textContent = 'Full-Month Tier Base:';
+      }
+
+      const desTbody = document.getElementById('des-statement-tbody');
+      desTbody.innerHTML = '';
+
+      const windowAllApprovedDeliverables = fin.windowClearedDeals.filter(d => d.buildStatus === 'approved');
+
+      if (windowAllApprovedDeliverables.length === 0) {
+        desTbody.innerHTML = `<tr><td colspan="7" class="py-4 text-center text-gray-400">No 100% Cleared &amp; Approved deliverables in this payout window.</td></tr>`;
+      } else {
+        windowAllApprovedDeliverables.forEach((d, idx) => {
+          let allocLabel = 'Covered in Monthly Base';
+          let bonusUsd = 0;
+
+          if (d.tierInfo.isNewBuild) {
+            if (d.newBuildRank === 1) {
+              allocLabel = 'Primary Build (Sets Tier Base)';
+              bonusUsd = 0;
+            } else {
+              allocLabel = `Additional Build #${d.newBuildRank}`;
+              bonusUsd = 50;
+            }
+          } else {
+            allocLabel = 'Maintenance (Included in Base)';
+          }
+
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="py-2.5 px-2 font-mono text-gray-300">#${idx + 1}</td>
+            <td class="py-2.5 px-3 font-semibold text-white">${d.clientName}</td>
+            <td class="py-2.5 px-3 text-gray-300">${d.tierInfo.name}</td>
+            <td class="py-2.5 px-3 text-center font-mono text-gray-300">Day ${d.clearedDay}</td>
+            <td class="py-2.5 px-3 text-center text-emerald-400 font-semibold">Approved &amp; Functional ✓</td>
+            <td class="py-2.5 px-3 text-right text-gray-300">${allocLabel}</td>
+            <td class="py-2.5 px-2 text-right font-mono font-bold text-white">${bonusUsd > 0 ? '+' + fmtUSD(bonusUsd) : '$0.00'}</td>
+          `;
+          desTbody.appendChild(tr);
+        });
+      }
+
+      const upgradeRow = document.getElementById('des-upgrade-row');
+      if (fin.windowDesignerUpgrade > 0) {
+        upgradeRow.classList.remove('hidden');
+        document.getElementById('des-upgrade-usd').textContent = '+' + fmtUSD(fin.windowDesignerUpgrade);
+      } else {
+        upgradeRow.classList.add('hidden');
+      }
+
+      const desAdj = Number(document.getElementById('des-adjustment-usd').value || 0);
+      appState.statements.designer.adjustmentUsd = desAdj;
+      const desNetUsd = fin.windowDesignerSubtotal + desAdj;
+
+      document.getElementById('des-base-usd').textContent = fmtUSD(fin.windowDesignerBase);
+      document.getElementById('des-bonus-usd').textContent = fmtUSD(fin.windowDesignerBonus);
+      document.getElementById('des-total-usd').textContent = fmtUSD(desNetUsd);
+      document.getElementById('des-total-php').textContent = `${fmtPHP(desNetUsd * fx)} PHP`;
+
+      saveState();
+    }
+
+    function copyStatementSummary(role) {
+      const fx = appState.fxRate;
+      let text = '';
+
+      if (role === 'founder') {
+        const s = appState.statements.founder;
+        const totalUsd = document.getElementById('fnd-total-usd').textContent;
+        const totalPhp = document.getElementById('fnd-total-php').textContent;
+        text = [
+          `AMPLIFIED MEDIA — FOUNDER EXECUTIVE PAYOUT STATEMENT`,
+          `Statement #: ${s.statementId}`,
+          `Principal: ${s.contractorName}`,
+          `Billing Month: ${appState.billingMonth} | Pay Date: ${s.payDate}`,
+          `Payment Method: ${s.payMethod} (${s.payAccount})`,
+          `Total Net Founder Distribution: ${totalUsd} USD (${totalPhp} @ ₱${fx.toFixed(2)}/USD)`,
+          `Classification: ${s.entityClass}`
+        ].join('\n');
+      } else if (role === 'csm') {
+        const s = appState.statements.csm;
+        const totalUsd = document.getElementById('csm-total-usd').textContent;
+        const totalPhp = document.getElementById('csm-total-php').textContent;
+        text = [
+          `AMPLIFIED MEDIA — CLIENT SUCCESS MANAGER (CSM) PAYOUT STATEMENT`,
+          `Statement #: ${s.statementId}`,
+          `Contractor: ${s.contractorName}`,
+          `Billing Month: ${appState.billingMonth} | Pay Date: ${s.payDate}`,
+          `Payment Method: ${s.payMethod} (${s.payAccount})`,
+          `Total Net Payout: ${totalUsd} USD (${totalPhp} @ ₱${fx.toFixed(2)}/USD)`,
+          `Authorized By: ${s.preparedBy}`
+        ].join('\n');
+      } else {
+        const s = appState.statements.designer;
+        const totalUsd = document.getElementById('des-total-usd').textContent;
+        const totalPhp = document.getElementById('des-total-php').textContent;
+        text = [
+          `AMPLIFIED MEDIA — FUNNEL DESIGNER PAYOUT STATEMENT`,
+          `Statement #: ${s.statementId}`,
+          `Contractor: ${s.contractorName}`,
+          `Billing Month: ${appState.billingMonth} | Pay Date: ${s.payDate}`,
+          `Payment Method: ${s.payMethod} (${s.payAccount})`,
+          `Total Net Payout: ${totalUsd} USD (${totalPhp} @ ₱${fx.toFixed(2)}/USD)`,
+          `Authorized By: ${s.preparedBy}`
+        ].join('\n');
+      }
+
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast('Payout Statement summary copied to clipboard.');
+      } catch (err) {
+        showToast('Unable to copy summary.', 'error');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function printPayoutStatement(role) {
+      const originalTitle = document.title;
+      if (role === 'founder') {
+        const id = document.getElementById('fnd-statement-id').value || 'Founder-Statement';
+        const name = (document.getElementById('fnd-contractor-name').value || 'Founder').replace(/\s+/g, '_');
+        document.title = `Amplified_Media_Founder_Payout_Statement_${name}_${id}`;
+      } else if (role === 'csm') {
+        const id = document.getElementById('csm-statement-id').value || 'CSM-Statement';
+        const name = (document.getElementById('csm-contractor-name').value || 'CSM').replace(/\s+/g, '_');
+        document.title = `Amplified_Media_CSM_Payout_Statement_${name}_${id}`;
+      } else {
+        const id = document.getElementById('des-statement-id').value || 'Designer-Statement';
+        const name = (document.getElementById('des-contractor-name').value || 'Designer').replace(/\s+/g, '_');
+        document.title = `Amplified_Media_Designer_Payout_Statement_${name}_${id}`;
+      }
+
+      window.print();
+      setTimeout(() => {
+        document.title = originalTitle;
+      }, 500);
+    }
+
+    function exportBackupJSON() {
+      const dataStr = JSON.stringify(appState, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `amplified-media-ops-backup-${appState.billingMonth.replace(/\s+/g, '-').toLowerCase()}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Backup JSON exported.');
+    }
+
+    function importBackupJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (!imported.deals || !imported.simulator) {
+            throw new Error('Invalid Amplified Media backup schema.');
+          }
+          appState = imported;
+          saveState();
+          hydrateUIFromState();
+          showToast('Backup restored successfully.');
+        } catch (err) {
+          showToast('Failed to import JSON backup.', 'error');
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    function promptNewBillingMonth() {
+      openConfirmModal(
+        'Start New Billing Month',
+        'This will archive/clear current month one-time deals while automatically carrying over active Monthly Maintenance retainers (set to Unpaid for the new month) and resetting any 28th+ rollover deals to Day 1. Continue?',
+        () => {
+          const carriedDeals = [];
+          appState.deals.forEach(d => {
+            if (d.tier === 'MAINT') {
+              carriedDeals.push({
+                ...d,
+                id: 'deal-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                paymentStatus: 'unpaid',
+                clearedDay: 1
+              });
+            } else if (d.clearedDay >= 28 && d.paymentStatus === 'cleared') {
+              carriedDeals.push({
+                ...d,
+                id: 'deal-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                clearedDay: 1
+              });
+            }
+          });
+
+          appState.deals = carriedDeals;
+          appState.statements.founder.otherExpenseUsd = 0;
+          appState.statements.founder.adjustmentUsd = 0;
+          appState.statements.csm.adjustmentUsd = 0;
+          appState.statements.designer.adjustmentUsd = 0;
+          saveState();
+          hydrateUIFromState();
+          showToast('New billing month initialized with carried-over retainers.');
+        }
+      );
+    }
+
+    function hydrateUIFromState() {
+      document.getElementById('global-fx-rate').value = appState.fxRate;
+      document.getElementById('global-billing-month').value = appState.billingMonth;
+      document.getElementById('global-cutoff-selector').value = appState.cutoffWindow;
+
+      document.getElementById('sim-adspend-slider').value = appState.simulator.adSpend;
+
+      document.getElementById('fnd-statement-id').value = appState.statements.founder.statementId;
+      document.getElementById('fnd-contractor-name').value = appState.statements.founder.contractorName;
+      document.getElementById('fnd-billing-month').value = appState.billingMonth;
+      document.getElementById('fnd-cutoff-select').value = appState.cutoffWindow;
+      document.getElementById('fnd-pay-date').value = appState.statements.founder.payDate;
+      document.getElementById('fnd-pay-method').value = appState.statements.founder.payMethod;
+      document.getElementById('fnd-pay-account').value = appState.statements.founder.payAccount;
+      document.getElementById('fnd-entity-class').value = appState.statements.founder.entityClass;
+      document.getElementById('fnd-adspend-usd').value = appState.statements.founder.adSpendUsd;
+      document.getElementById('fnd-other-expense-usd').value = appState.statements.founder.otherExpenseUsd;
+      document.getElementById('fnd-adjustment-usd').value = appState.statements.founder.adjustmentUsd;
+      document.getElementById('fnd-sig-name').textContent = appState.statements.founder.contractorName;
+
+      document.getElementById('csm-statement-id').value = appState.statements.csm.statementId;
+      document.getElementById('csm-contractor-name').value = appState.statements.csm.contractorName;
+      document.getElementById('csm-billing-month').value = appState.billingMonth;
+      document.getElementById('csm-cutoff-select').value = appState.cutoffWindow;
+      document.getElementById('csm-pay-date').value = appState.statements.csm.payDate;
+      document.getElementById('csm-pay-method').value = appState.statements.csm.payMethod;
+      document.getElementById('csm-pay-account').value = appState.statements.csm.payAccount;
+      document.getElementById('csm-prepared-by').value = appState.statements.csm.preparedBy;
+      document.getElementById('csm-leads-assigned').value = appState.statements.csm.leadsAssigned;
+      document.getElementById('csm-calls-held').value = appState.statements.csm.callsHeld;
+      document.getElementById('csm-deals-closed').value = appState.statements.csm.dealsClosed;
+      document.getElementById('csm-adjustment-usd').value = appState.statements.csm.adjustmentUsd;
+      document.getElementById('csm-sig-name').textContent = appState.statements.csm.contractorName;
+
+      document.getElementById('des-statement-id').value = appState.statements.designer.statementId;
+      document.getElementById('des-contractor-name').value = appState.statements.designer.contractorName;
+      document.getElementById('des-billing-month').value = appState.billingMonth;
+      document.getElementById('des-cutoff-select').value = appState.cutoffWindow;
+      document.getElementById('des-pay-date').value = appState.statements.designer.payDate;
+      document.getElementById('des-pay-method').value = appState.statements.designer.payMethod;
+      document.getElementById('des-pay-account').value = appState.statements.designer.payAccount;
+      document.getElementById('des-prepared-by').value = appState.statements.designer.preparedBy;
+      document.getElementById('des-adjustment-usd').value = appState.statements.designer.adjustmentUsd;
+      document.getElementById('des-sig-name').textContent = appState.statements.designer.contractorName;
+
+      updateCsmCloseRate();
+      updateSimulator();
+      renderLedger();
+      renderStatements();
+      switchTab(appState.activeTab || 'simulator');
+    }
+
+    document.getElementById('global-fx-rate').addEventListener('input', (e) => {
+      const val = parseFloat(e.target.value);
+      if (val > 0) {
+        appState.fxRate = val;
+        saveState();
+        updateSimulator();
+        renderLedger();
+        renderStatements();
+      }
+    });
+
+    document.getElementById('global-billing-month').addEventListener('input', (e) => {
+      syncBillingMonthFromStatement(e.target.value);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      hydrateUIFromState();
+    });
+  </script>
+</body>
+</html>
